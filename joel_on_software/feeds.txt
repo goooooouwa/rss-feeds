@@ -1,1 +1,8 @@
 https://raw.githubusercontent.com/goooooouwa/rss-feeds/master/joel_on_software/slice-0.xml
+https://raw.githubusercontent.com/goooooouwa/rss-feeds/master/joel_on_software/slice-1.xml
+https://raw.githubusercontent.com/goooooouwa/rss-feeds/master/joel_on_software/slice-2.xml
+https://raw.githubusercontent.com/goooooouwa/rss-feeds/master/joel_on_software/slice-3.xml
+https://raw.githubusercontent.com/goooooouwa/rss-feeds/master/joel_on_software/slice-4.xml
+https://raw.githubusercontent.com/goooooouwa/rss-feeds/master/joel_on_software/slice-5.xml
+https://raw.githubusercontent.com/goooooouwa/rss-feeds/master/joel_on_software/slice-6.xml
+https://raw.githubusercontent.com/goooooouwa/rss-feeds/master/joel_on_software/slice-7.xml

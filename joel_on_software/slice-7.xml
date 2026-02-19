@@ -1,0 +1,1399 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0">
+<channel>
+<title>Joel on Software</title>
+<description>I'm Joel Spolsky, a software developer in New York City.</description>
+<link>https://www.joelonsoftware.com</link>
+<pubDate>2026-02-18T19:23:45-08:00</pubDate>
+<!-- other elements omitted from this example -->
+<item>
+<title><![CDATA[ How Trello is different ]]></title>
+<link></link>
+<content><![CDATA[ 
+		<p>Just a few months ago, we launched <a href="http://trello.com/">Trello</a>, a super simple, web-based team coordination system. The feedback has been overwhelmingly positive and adoption has been very strong, even in its early, 1.0 state.</p>
+<p><span class="side"><a href="https://i0.wp.com/www.joelonsoftware.com/wp-content/uploads/2012/01/06Trello.png?ssl=1"><img alt="image placeholder" ></a></span></p>
+<p>Trello is new kind of development project for Fog Creek. It’s 100% hosted; there will never be an “installed software” version of Trello. That allowed us to modernize many aspects of our development process; I am happy to announce that there is <em>absolutely no Visual Basic code involved in any part of Trello</em>. What’s next, flying cars?</p>
+<p>The biggest difference you’ll notice (compared to our <a href="http://www.fogcreek.com/FogBugz/">previous</a> <a href="http://www.fogcreek.com/kiln/">products</a> pitched solely at software developers) is that <em>Trello is a totally horizontal product.</em><strong> </strong></p>
+<p>Horizontal means that it can be used by people from all walks of life. Word processors and web browsers are horizontal. The software your dentist uses to torture you with drills is vertical.</p>
+<p>Vertical software is much easier to pull off and make money with, and it’s a good choice for your first startup. Here are two key reasons:</p>
+<ul>
+<li>It’s easier to find customers. If you make dentist software, you know which conventions to go to and which magazines to advertise in. All you have to do is find dentists. </li>
+<li>The margins are better. Your users are professionals at work and it makes sense for them to give you money if you can solve their problems.</li>
+</ul>
+<p>Making a major horizontal product that’s useful in any walk of life is almost impossible to pull off. You can’t charge very much, because you’re competing with other horizontal products that can amortize their development costs across a huge number of users. It’s high risk, high reward: not suitable for a young bootstrapped startup, but not a bad idea for a second or third product from a mature and stable company like Fog Creek.</p>
+<p>Forgive me if I now divert into telling you a quick story about my time spent on the Microsoft Excel team way back in 1991. (Yes, I know you were not born yet, but I assure you that computers had been invented. Just hop up here on my knee and shut up.)</p>
+<p><span class="side"><a href="https://i0.wp.com/www.joelonsoftware.com/wp-content/uploads/2012/01/06cpark.jpg?ssl=1"><img alt="image placeholder" ></a></span>Everybody thought of Excel as a financial modeling application. It was used for creating calculation models with formulas and stuff. You would put in your assumptions and then calculate things like “if interest rates go up by 0.00001% next year, what percentage of Las Vegas homeowners will plunge into bankruptcy?” For example.</p>
+<p>Round about 1993 a couple of us went on customer visits to see how people were using Excel.</p>
+<p>We found a fellow whose entire job consisted of maintaining the “number of injuries this week” spreadsheet for a large, highly-regulated utility.</p>
+<p>Once a week, he opened an Excel spreadsheet which listed ten facilities, containing the name of the facilities and the number 0, which indicated that were 0 injuries that week. (They never had injuries).</p>
+<p>He typed the current date in the top of the spreadsheet, printed a copy, put it in a three-ring binder, and that was pretty much his whole, entire job. It was kind of sad. He took two lunch breaks a day. I would too, if that was my whole job.</p>
+<p>Over the next two weeks we visited dozens of Excel customers, and did not see anyone using Excel to actually perform what you would call “calculations.” Almost all of them were using Excel because it was a convenient way to create a table.</p>
+<p>(Irrelevant sidenote: the few customers we could find who were doing calculations were banks, devising explosive devices called “derivatives.” They used Excel to maximize the bankers’ bonuses on nine out of ten years, and to cause western civilization to nearly collapse every tenth year. Something about <a href="http://www.amazon.com/gp/product/1400063515/ref=as_li_ss_tl?ie=UTF8&amp;tag=joelonsoftware&amp;linkCode=as2&amp;camp=1789&amp;creative=390957&amp;creativeASIN=1400063515">black swans</a>. Probably just a floating point rounding error.)</p>
+<p>What was I talking about? Oh yeah… most people just used Excel to make lists. Suddenly we understood why Lotus Improv, which was this fancy futuristic spreadsheet that was going to make Excel obsolete, had failed completely: because it was great at calculations, but terrible at creating tables, and everyone was using Excel for tables, not calculations.</p>
+<p>Bing! A light went off in my head. </p>
+<p>The great horizontal killer applications are actually just fancy data structures.</p>
+<p>Spreadsheets are not just tools for doing “what-if” analysis. They provide a specific data structure: a table. Most Excel users never enter a formula. They use Excel when they need a table. The gridlines are the most important feature of Excel, not recalc.</p>
+<p>Word processors are not just tools for writing books, reports, and letters. They provide a specific data structure: lines of text which automatically wrap and split into pages. </p>
+<p>PowerPoint is not just a tool for making boring meetings. It provides a specific data structure: an array of full-screen images. </p>
+<p>Some people saw Trello and said, “oh, it’s Kanban boards. For developing software the agile way.” Yeah, it’s that, but it’s also for planning a wedding, for making a list of potential vacation spots to share with your family, for keeping track of applicants to open job positions, and for a billion other things. In fact Trello is for anything where you want to maintain a <em>list of lists </em>with a group of people.</p>
+<p>There are millions of things that need that kind of data structure, and there hasn’t been a great “list-of-list” app before Trello. (There have been outliners, but outlines are, IMHO, one of the great dead ends in UI design: so appealing to programmers, yet so useless to civilians).</p>
+<p>Once you get into Trello, you’ll use it for everything. I use about thirty Trello boards regularly, and I use them with everyone in my life, from the APs (Aged Parents), with whom I plan vacations, with every team at work, and just about every project I’m involved in.</p>
+<p>So, ok, that was the first big difference with Trello: horizonal, not vertical. But there are a bunch of other differences:</p>
+<p><strong><span class="side"><a href="https://i0.wp.com/www.joelonsoftware.com/wp-content/uploads/2012/01/06taco.jpg?ssl=1"><img alt="image placeholder" ></a></span>It’s delivered continuously.</strong> Rather than having major and minor releases, we pretty much just continuously push out new features from development to customers. A feature that you built and tested, but didn’t deliver yet because you’re waiting for the next major release, becomes <em>inventory</em>. Inventory is dead weight: money you spent that’s just wasting away without earning you anything. Sure, 100 years ago, we had these things called “CD-ROMs” and we shipped software that way, so there was an economic reason to bunch up features before we inflict ‘em on the world. But there’s no reason to work that way any more. You already knew that, of course. I’m just saying—I stopped using Visual Basic about five minutes ago. Brave New World.</p>
+<p><strong>It’s not exhaustively tested before being released.</strong> We thought we could get away with this because Trello is free, so customers are more forgiving. But to tell the truth, the real reason we get away with it is because bugs are fixed in a matter of hours, not months, so the net number of “bugs experienced by the public” is low.</p>
+<p><strong>We work in public.</strong> The rule on the Trello team is “default public.” We have a <a href="https://trello.com/board/trello-development/4d5ea62fd76aa1136000000c">public Trello board</a> that shows everything that we’re working on and where it’s up to. We use this to let customers vote and comment on their favorite features. By the way, while Trello was under development, it was secret. We had a lot of beta testers who gave us customer feedback so that the development team could use <a href="http://www.amazon.com/gp/product/0307887898/ref=as_li_ss_tl?ie=UTF8&amp;tag=joelonsoftware&amp;linkCode=as2&amp;camp=1789&amp;creative=390957&amp;creativeASIN=0307887898">lean startup</a> principles, but the nine months we spent building version 1.0 in secret gave us a significant lead in a competitive marketplace. But now that we’re shipping, there’s no reason not to talk about our plans.</p>
+<p><strong>This is a “Get Big Fast” product, not a “Ben and Jerry’s”  product.</strong> See <a href="https://www.joelonsoftware.com/articles/fog0000000056.html">Strategy Letter I</a>. The business goal for Trello is to ultimately get to 100 million users. That means that our highest priority is removing any obstacles to adoption. <em>Anything </em>that people might use as a reason not to use Trello has to be found and eliminated. For example:</p>
+<p><strong>Trello is free. </strong>The friction caused by charging for a product is the biggest impediment to massive growth. In the long run, we think it’s much easier to figure out how to extract a small amount of money out of a large number of users than to extract a large amount of money out of a small number of users. Once you have 100 million users, it’s easy to figure out which of those users are getting the most value out of the product you built. The ones who are getting the most value will be happy to pay you. The others don’t cost much to support.</p>
+<p><strong><span class="side"><a href="https://i0.wp.com/www.joelonsoftware.com/wp-content/uploads/2012/01/06iphone4picturesareupsidedown.jpg?ssl=1"><img alt="image placeholder" ></a></span>The API and plug-in architectures are the highest priority. </strong>Another way of putting that is:  never build anything in-house if you can expose a basic API and get those high-value users (the ones who are getting the most value out of the platform) to build it for you. On the Trello team, any feature that <em>can </em>be provided by a plug-in <em>must</em> be provided by a plug-in.</p>
+<p>(The <a href="http://trello.com/api">API</a> is currently in very rudimentary form. You can already use it to do very interesting things. It is under rapid development.)</p>
+<p><strong>We use cutting edge technology. </strong>Often, this means we get cut fingers. Our developers bleed all over MongoDB, WebSockets, CoffeeScript and Node. But at least they’re having fun. And in today’s tight job market, great programmers have a lot of sway on what they’re going to be working on. If you can give them an exciting product that will touch millions of people, and let them dig deep into TCP-IP internals while they try to figure out why simple things aren’t working, they’ll have fun and they’ll love their jobs. Besides, we’re creating a product that we’ll be working on for the next ten years. Technology that’s merely “state of the art” today is going to be old and creaky in five years. We tried to go a little bit beyond “state of the art.” It’s a calculated risk.</p>
+<p>None of this is very radical. TL;DR: Fog Creek Software develops an internet product using techniques that every Y-combinator startup has been using since spez was <a href="http://www.mentalfloss.com/blogs/archives/14093">sleeping with his laptop</a> so he could reboot Reddit when Lisp crashed in the middle of the night. If you haven’t tried Trello yet, try it, then <a href="https://twitter.com/#!/spolsky">tell me on twitter</a> if it worked.</p>
+			 ]]></content>
+<pubDate>2012-01-06T00:14:14+00:00</pubDate>
+<guid></guid>
+<author><![CDATA[ Joel Spolsky ]]></author>
+</item>
+<item>
+<title><![CDATA[ New York City gets a Software Engineering High School ]]></title>
+<link></link>
+<content><![CDATA[ 
+		<p>This fall New York City will open <a href="http://www.businessinsider.com/the-academy-for-software-engineering-2012-1">The Academy for Software Engineering</a>, the city’s first public high school that will actually train kids to develop software. The project has been a long time dream of <a href="http://cestlaz.blogspot.com/">Mike Zamansky</a>, the highly-regarded CS teacher at New York’s elite Stuyvesant public high school. It was jump started when <a href="http://avc.com/">Fred Wilson</a>, a VC at Union Square Ventures, promised to get the tech community to help with knowledge, advice, and money.</p>
+<p>I’m on the board of advisors of the new school, which plans to accept ninth graders for fall of 2012. Here’s why I’m excited about this new school:</p>
+<p><strong>1. It’s a “limited, unscreened” school.</strong>  That’s Board of Ed jargon. It means that any student who is interested can apply—their grades and attendence record are not taken into account in deciding whether or not to admit them, only their interest. I think this is the best thing about the school. A lot of kids are just not interested enough in other academic subjects to get good grades, but they would make great software engineers. A lot of immigrants (especially in New York) are not yet proficient enough in English to get good grades in all their subjects, but they’re going to make great software engineers, too. And in my humble opinion, a school that accepts a cross-section of students is bound to be more enriching than a school that only accepts academic superstars.</p>
+<p><strong>2. OMG do we ever need more software engineers.</strong> The US post-secondary education system is massively failing us: it’s not producing even remotely enough programmers to meet the hiring needs of the technology industry. Not even remotely enough. Starting salaries for smart programmers from top schools are flirting with the $100,000 mark. Supply isn’t even close to meeting demand. This school is going to be pretty small (in the 400-500 student range) but the Board of Ed has promised that if it’s successful it’ll be used as a template for more schools or for special programs inside larger schools. I predict that they will be overwhelmed with applicants and this will be the most popular new school in New York City in years.</p>
+<p><strong>3. And we need more diversity, too. </strong>One of the reasons the elite US colleges seem to turn out so few computer science majors every year is that they are only drawing from a narrow pool of mostly white and asian males. Minorities and women are embarrassingly under-represented. Hopefully an unscreened school in New York City can pump a lot more diversity into the pool.</p>
+<p><strong>4. It’s not a vocational school. </strong>Unlike traditional vocational schools, this new school will have a rigorous academic component and will prepare students for college. But college is not for everyone—many of the best programmers I know were just not interested enough in a general four year degree and went straight into jobs programming.</p>
+<p>I’m pleased to be involved in this project, but it needs more help: they’re still looking for qualified computer science teachers and a principal. If you’re interested drop me an email and I’ll make sure it gets through to the right people.</p>
+			 ]]></content>
+<pubDate>2012-01-13T00:14:15+00:00</pubDate>
+<guid></guid>
+<author><![CDATA[ Joel Spolsky ]]></author>
+</item>
+<item>
+<title><![CDATA[ The Management Team ]]></title>
+<link></link>
+<content><![CDATA[ 
+		<p>“The saddest thing about the Steve Jobs hagiography is all the young ‘incubator twerps’ strutting around Mountain View deliberately cultivating their worst personality traits because they imagine that’s what made Steve Jobs a design genius. Cum hoc ergo propter hoc, young twerp. Maybe try wearing a black turtleneck too.”</p>
+<p>From <a href="http://www.avc.com/a_vc/2012/02/the-management-team-guest-post-from-joel-spolsky.html">The Management Team</a>, my guest post on Fred Wilson’s blog.</p>
+			 ]]></content>
+<pubDate>2012-02-13T00:14:16+00:00</pubDate>
+<guid></guid>
+<author><![CDATA[ Joel Spolsky ]]></author>
+</item>
+<item>
+<title><![CDATA[ The Founder’s Dilemmas ]]></title>
+<link></link>
+<content><![CDATA[ 
+		<p><span class="side"><a href="https://i0.wp.com/www.joelonsoftware.com/wp-content/uploads/2012/03/27fd.jpg?ssl=1"><img alt="image placeholder" ></a></span>My friend Noam Wasserman at Harvard Business School has spent years researching startups. His work is great, because he actually does real, quantitative research on the kinds of things that everybody has opinions about. Should you raise more money or maintain more control? Should you have a cofounder? Should your friends and relatives be cofounders? When and if should a founder be replaced by a “professional” manager? There are certainly a lot of blog posts about this stuff but not a lot of data… until now. Wasserman has finally put it all together in a great book called <a href="http://www.amazon.com/gp/product/0691149135/ref=as_li_ss_tl?ie=UTF8&amp;tag=joelonsoftware&amp;linkCode=as2&amp;camp=1789&amp;creative=390957&amp;creativeASIN=0691149135">The Founder’s Dilemmas</a>, which I highly recommend if you’re starting a company.</p>
+<p>(By the way, Wasserman will also be speaking at the <a href="http://businessofsoftware.org/">Business of Software conference</a> this fall in Boston.)</p>
+			 ]]></content>
+<pubDate>2012-03-27T00:14:17+00:00</pubDate>
+<guid></guid>
+<author><![CDATA[ Joel Spolsky ]]></author>
+</item>
+<item>
+<title><![CDATA[ Trello at UserVoice ]]></title>
+<link></link>
+<content><![CDATA[ 
+		<p>The folks over at <a href="http://www.uservoice.com/">UserVoice</a> are using <a href="https://trello.com/">Trello</a> quite extensively throughout their development process. </p>
+<p><img alt="image placeholder" ></p>
+<p><a href="http://www.uservoice.com/blog/index.php/founders/trello-google-docs-product-management/?utm_campaign=blog&amp;utm_medium=rare&amp;utm_source=joelonsoftware">Founder Richard White describes it all in detail</a>.</p>
+			 ]]></content>
+<pubDate>2012-04-17T00:14:18+00:00</pubDate>
+<guid></guid>
+<author><![CDATA[ Joel Spolsky ]]></author>
+</item>
+<item>
+<title><![CDATA[ Software Inventory ]]></title>
+<link></link>
+<content><![CDATA[ 
+		<p>Imagine, for a moment, that you came upon a bread factory for the first time. At first it just looks like a jumble of incomprehensible machinery with a few people buzzing around. As your eyes adjust you start to see little piles of things that you <em>do</em> understand. Buckets of sesame seeds. Big vats of dough. Little balls of dough. Baked loaves of bread.</p>
+<p>Those things are inventory. Inventory tends to pile up between machines. Next to the machine where sesame seeds are applied to hamburger buns, there’s a big vat of…sesame seeds. At the very end of the assembly line, there are boxes and boxes of bread, waiting for trucks to drive them off to customers.</p>
+<p>Keeping inventory costs money. Suppose your bakery has six 50-ton silos to store flour. Whenever they empty out, you fill them up. That means on the average day you have 150 metric tons of wheat flour in stock. At today’s prices, you’ve tied up $73,000. Forever.</p>
+<p>Inventory may have other costs too, like spoilage. Flour lasts for months, but the minute bread comes out of the oven it starts dropping in value; after 24 hours it’s nearly worthless.</p>
+<p><span class="side"><a href="https://i0.wp.com/www.joelonsoftware.com/wp-content/uploads/2012/07/09taco1.jpg?ssl=1"><img alt="image placeholder" ></a></span>Why keep inventory at all? Because there are costs associated with running out of things, too. If sesame seeds take two days to order, and you run out of sesame seeds, you are out of the hamburger bun business for two days. Inventory provides a buffer that prevents any part of the process from stalling. There are modern algorithms to optimize how much buffer you need at every point (read up on Toyota’s lean production system and the Theory of Constraints to get started).</p>
+<p>Why do I care about any of this? The software production process has several major “inventory” accumulation points, itself. Stuff accumulates at those points and ends up wasting a lot of time and money.</p>
+<p>“What? How is software like a factory?” you ask.</p>
+<p>Think of product ideas as the raw material. Depending on your process, product ideas may go through several assembly line points before they are delivered as finished features to the customer:</p>
+<ol>
+<li>A decision-making process (should we implement this feature?)</li>
+<li>A design process (specs, whiteboards, mockups, etc)</li>
+<li>An implementation process (writing code)</li>
+<li>A testing process (finding bugs)</li>
+<li>A debugging process (fixing bugs)</li>
+<li>A deployment process (sending code to customers, putting it on web server, etc)</li>
+</ol>
+<p>(PS No, this is not “waterfall.” No it isn’t. Is <em>not. </em>Shut up.)</p>
+<p>In between each of these stages, inventory can pile up. For example, when a programmer finishes implementing their code (stage 3) they give it to a tester to check (stage 4). At any given time, there is a certain amount of code waiting to be tested. That code is inventory.</p>
+<p>The “cost” of code inventory is huge. It might add up to six or twelve months of work that is stuck in the assembly line and not yet in customers’ hands. This could be the difference between having a cutting-edge product (iPhone) or constantly playing catchup (Windows Phone). It’s nearly impossible to get people to buy Windows Phones, even if the iPhone is only six months better. A lot of markets have network effects, and being first has winner-take-all implications. So getting rid of inventory in the development process can make or break a product.</p>
+<p>Let’s go over the three places most inventory accumulates.</p>
+<p><strong>Feature backlogs.</strong> Every product attracts new feature ideas, and you can’t implement ideas as fast as you can think them up, so you write them down, and this list is called the feature backlog. A lot of the ideas on the backlog are bad ideas, and you merely wrote them down to avoid hurting the feelings of the people who thought them up. Backlogs make everyone feel good. </p>
+<p>The trouble is that 90% of the things in the feature backlog will never get implemented, ever. So every minute you spent writing down, designing, thinking about, or discussing features that are never going to get implemented is just time wasted. When I hear about product teams that regularly have “backlog grooming” sessions, in which they carefully waste a tiny amount of time and mental energy every day or every week thinking about every single feature which will never be implemented, I want to poke my eyes out.</p>
+<ul>
+<li>Suggestion: Do not allow more than a month or two of work to get into the feature backlog list. Once the backlog is full, do not allow new items to be added unless you remove an item. Do not spend any time speccing, designing, or talking about backlog items: the backlog, in fact, should be seen as a list of things you are not allowed to talk about or work on.</li>
+</ul>
+<p><strong><span class="side"><a href="https://i0.wp.com/www.joelonsoftware.com/wp-content/uploads/2012/07/09taco2.jpg?ssl=1"><img alt="image placeholder" ></a></span>The bug database</strong> is obviously a great thing to have. Bug reports should be complete, accurate, and actionable. But I have noticed that in many real-world companies, the desire never to miss any bug report leads to bug bankrupcy, where you wake up one day and discover that there are 3000 open bugs in the database, some of which are so old they may not apply any more, some of which can never be reproduced, and most of which are not even worth fixing because they’re so tiny. When you look closely you realize that months or years of work has gone into preparing those bug reports, and you ask yourself, how could we have 3000 bugs in the database while our product is delightful and customers love it and use it every day? At some point you realize that you’ve put too much work into the bug database and not quite enough work into the product.</p>
+<ul>
+<li>Suggestion: use a triage system to decide if a bug is even worth recording. </li>
+<li>Do not allow more than two weeks (in fix time) of bugs to get into the bug database. </li>
+<li>If you have more than that, stop and fix bugs until you feel like you’re fixing stupid bugs. Then close as “won’t fix” everything left in the bug database. Don’t worry, the severe bugs will come back.</li>
+</ul>
+<p><strong>Undeployed features.</strong> There are still a lot of teams doing quarterly or annual releases, usually because their deployment process is expensive. Operating systems, or anything where software has to be installed by every user, is usually batched up. </p>
+<p>This is one of the most expensive forms of inventory: unshipped feature inventory. It could be earning you money, but it’s sitting on the shipping dock of your factory, while the guy down the street already has a product that does that exact same thing.</p>
+<p>Sometimes, perniciously, you don’t even feel the pain, because everyone on your team has been dogfooding the new version for months. I’m sure everyone at Microsoft has been happily using Windows 8 for a year now, so they don’t really feel, on a day to day basis, the pain of OEMs trying to sell Windows 7 in a Mac OS X Lion world.</p>
+<ul>
+<li>Suggestion: Don’t let completed features pile up in ways that don’t make you money. Work on your deployment process so that you can get customers features in months rather than years. If you’re already shipping monthly, figure out how to ship weekly. Keep pushing the bar on more and more frequent deployment of smaller and smaller changes.</li>
+</ul>
+<p>So, where am I going with this? We’ve had all three kinds of inventory at Fog Creek: crazy long backlogs, overambitious bug databases, and features which got stuck for a year waiting for the next release to go out. All of these snuck up on us. I realized that we needed a system to constrain inventory so it doesn’t build up. </p>
+<p>My original idea was to make a product called <em>Five Things</em>. It was going to be a project manager where everybody was allowed to have five things assigned to them: two things they were actively doing, one thing that was “up next”, and a couple more that they were planning. That exact design idea didn’t go anywhere (but if you want to build it, go for it), but it did evolve into <a href="http://trello.com/">Trello</a>.</p>
+<p><span class="side"><a href="https://trello.com/dev"><img alt="image placeholder" ></a></span>Trello works great for a <em>reasonable</em> amount of inventory, but it intentionally starts to get klunky if you have too many cards in one list. And that’s exactly the point: it makes inventory <em>visible</em> so that you know when it’s starting to pile up. (Click on the image at the right to see the Trello team’s own development board).</p>
+<p>Every day you look at your Trello board and see that there are seventeen completed features that are totally ready to ship but which haven’t shipped for some reason, and you go find the bottleneck and eliminate it. </p>
+<p>Every time somebody suggests a crazy feature idea, you look at the Feature Backlog and realize it’s just too long, so you don’t waste any time documenting or designing that crazy idea.</p>
+<p>And hopefully, you’ll spend less effort working on things that never see the light of day. “Backlog grooming.” Sheeeesh.</p>
+			 ]]></content>
+<pubDate>2012-07-09T00:14:19+00:00</pubDate>
+<guid></guid>
+<author><![CDATA[ Joel Spolsky ]]></author>
+</item>
+<item>
+<title><![CDATA[ Town Car Version Control ]]></title>
+<link></link>
+<content><![CDATA[ 
+		<p>The team at Fog Creek is releasing a major new version of <a href="http://www.fogcreek.com/kiln">Kiln</a> today. Kiln is a distributed version control system.</p>
+<p>One of the biggest new features is Kiln Harmony, which lets you operate on Kiln repositories using either Git or Mercurial. So you can push changes to a Kiln repo using Git and then pull them using Mercurial. This means that you never have to decide whether you want to use Git or Mercurial. Religious war: averted.</p>
+<p><span class="side"><a href="https://i0.wp.com/www.joelonsoftware.com/wp-content/uploads/2013/03/11-taco.jpg?ssl=1"><img alt="image placeholder" ></a></span>But, I’m getting ahead of myself!</p>
+<p>For those of you that have been living under a rock, the single biggest change in developers’ lives in the last decade (besides <a href="http://stackoverflow.com/">Stack Overflow</a>, natch) is <a href="https://www.joelonsoftware.com/items/2010/03/17.html">Distributed Version Control</a>. DVCS is such an important improvement over the previous generation of centralized version control (Subversion, CVS, etc.) that it’s a required upgrade, even though it’s honestly a bit harder to use.</p>
+<p>The popular DVCS options are Git and Mercurial. Both are open source. They are very, very similar in capabilities and operation; in fact, they are so similar that Kiln Harmony hides all the differences, so you can use any Git <em>or</em> Mercurial tool to work with any Kiln repository.</p>
+<p>If Git and Mercurial are open source, why are people making money selling them?</p>
+<p>The short answer is that the open source tools are kind of raw. They’re dune buggies. Powerful, yes, and sufficient for a college project, but as it turns out, people buy Cadillacs, not dune buggies, to drive around in, because they like to have windshield wipers, 14-way power adjustable seats, and a way to start the engine from twenty feet away. Just in case you live in a Hollywood movie and the ignition has been hooked up to a bomb.</p>
+<p><a href="http://www.fogcreek.com/">Fog Creek</a> (and others, notably <a href="https://github.com/">GitHub</a>) are making money selling version control by providing a whole bunch of features that make the overall code management experience easier and more useful. For example, we both provide professional, secure hosting, a web management and administration interface, and somebody you can call for help.</p>
+<p>Where we differ is that Kiln is more focused on the corporate market, while GitHub was designed for open source projects. I think of Kiln as the corporate Lincoln Town Car, while GitHub is kind of a VW Minibus. Both are eminently better choices than using raw Git.</p>
+<p>So, specifically, Kiln gives you corporate things like:</p>
+<ul>
+<li>code reviews</li>
+<li>access control and permissions</li>
+<li>fast code search</li>
+<li>a news feed to follow code you care about</li>
+</ul>
+<p>GitHub gives you things that match the sociology of open source projects:</p>
+<ul>
+<li>public home pages</li>
+<li>a social network, with profiles</li>
+<li>fork and pull workflow</li>
+</ul>
+<p><span class="side"><a href="https://i0.wp.com/www.joelonsoftware.com/wp-content/uploads/2013/03/11-taco2.jpg?ssl=1"><img alt="image placeholder" ></a></span>Since internal corporate projects have a very different sociology than open source projects, Kiln is very different than GitHub. On internal projects, almost all code that is developed is eventually used, although it needs to be reviewed, so Kiln kind of assumes that everything you do is most likely going to end up in the main code base, and we have a slick code review system.</p>
+<p>On open source projects, contributions can come from volunteers all over the Internet, many of whom are happy to fork the code for their own needs. So GitHub provides a social network, emphasizes the ease of forking someone else’s code (something you’re unlikely to do in a closed corporate environment), and has a thing called a <a href="https://help.github.com/articles/using-pull-requests">pull request</a> that matches the way people tend to collaborate on open source projects without advance coordination.</p>
+<p>ANYWAY, back to the new version of Kiln.</p>
+<p>When Tyler and Ben built Kiln 1.0, they built it on Mercurial. Why? Well, Mercurial had pretty much all the same concepts as Git, but Git was historically unfriendly to Windows which is used by many of our corporate clients. We also thought that the Mercurial command line (hg) was a bit closer to Subversion (svn) which a lot of programmers were already used to.</p>
+<p>So, long story short, we decided Mercurial was about 1% better than Git and that’s the way we went. We didn’t want to start a holy war, and we liked Git, but we just had a feeling that all else being equal, Mercurial was <em>marginally</em> better than Git.</p>
+<p>We still think that, but in the years since Kiln first shipped, GitHub has taken the world by storm, creating an ecosystem around Git that more than makes up for its minor failings. Today Git is without a doubt more popular. So we knew we needed to add Git to Kiln.</p>
+<p><span class="side"><a href="https://i0.wp.com/www.joelonsoftware.com/wp-content/uploads/2013/03/11-taco3.jpg?ssl=1"><img alt="image placeholder" ></a></span>We could have done it the lazy way: support both kinds of repositories and make you choose which one to use. Maybe add some nice conversion tools.</p>
+<p>But we are not lazy. We decided to do it the <em>awesome</em> way.</p>
+<p>We decided that the awesome way would be to make Kiln fully bilingual. It stores every repo in <em>both</em> formats. It automatically converts everything back and forth, always. The translation is 1:1, reversible, and round-trippable. Whatever you do to a Kiln repository using Git will be immediately visible to Mercurial users and vice versa.</p>
+<p>Every user of every Kiln repo can choose either Mercurial or Git, and everything always works.</p>
+<p>You can push in Git, and pull in Mercurial. Or vice versa. Or both.</p>
+<p>A team that uses Mercurial internally (and barely understands Git) can push their code to GitHub and interact with the GitHub community.</p>
+<p>If your team likes Git but you prefer Mercurial yourself, you can use a different version control system than everybody else on your team and, honestly, they don’t even have to know.</p>
+<p>If your team is using Mercurial today but you want to switch to Git, you can move over — one person at a time. If Joe in Accounting refuses to move, it doesn’t matter. He can keep using Mercurial.</p>
+<p>Everything maps. Everything round-trips.</p>
+<p>There are some other big improvements in the version of Kiln available today. Super-fast code search. SSH and IP-whitelisting for security. Project READMEs. A bunch of other improvements throughout the interface that will be a huge upgrade for anyone already using Kiln. If you’re interested, you can <a href="https://secure.fogcreek.com/kiln/try">start a free trial online</a>.</p>
+			 ]]></content>
+<pubDate>2013-03-11T00:14:20+00:00</pubDate>
+<guid></guid>
+<author><![CDATA[ Joel Spolsky ]]></author>
+</item>
+<item>
+<title><![CDATA[ The Patent Protection Racket ]]></title>
+<link></link>
+<content><![CDATA[ 
+		<p>The fastest growing industry in the US right now, even during this time of slow economic growth, is probably the patent troll protection racket industry. Lawsuits surrounding software patents have <a href="https://www.eff.org/deeplinks/2012/02/why-patent-system-doesnt-play">more than tripled since 1999</a>.</p>
+<p>It’s a great business model. </p>
+<p>Step one: buy a software patent. There are millions of them, and they’re all quite vague and impossible to understand.</p>
+<p>Step two: FedEx a carefully crafted letter to a few thousand small software companies, iPhone app developers, and Internet startups. This is where it gets a tiny bit tricky, because the recipients of the letter need to think that it’s a threat to sue if they don’t pay up, but in court, the letter has to look like an invitation to license some exciting new technology. In other words it has to be <em>just on this side</em> of extortion.</p>
+<p>Step three: wait patiently while a few thousand small software companies call their lawyers, and learn that it’s probably <a href="http://www.marco.org/2011/05/23/why-marco-arment-is-wrong">better</a> just to pay off the troll, because even beginning to fight the thing using the legal system is going to cost a million dollars.</p>
+<p>Step four: Profit!</p>
+<p>What does this sound like? Yes, it’s a textbook case of a <a href="http://en.wikipedia.org/wiki/Protection_racket">protection racket</a>. It is organized crime, plain and simple. It is an abuse of the legal system, an abuse of the patent system, and a moral affront.</p>
+<p>In the face of organized crime, civilized people don’t pay up. When you pay up, you’re funding the criminals, which makes you complicit in their next attacks. I know, you’re just trying to write a little app for the iPhone with in-app purchases, and you didn’t ask for this fight to be yours, but if you pay the trolls, giving them money and comfort to go after the next round of indie developers, you’re not just being “pragmatic,” you have actually gone over to the dark side. Sorry. Life is a bit hard sometimes, and sometimes you have to step up and fight fights that you never signed up for.</p>
+<p><span class="side"><a href="https://i0.wp.com/www.joelonsoftware.com/wp-content/uploads/2013/04/7samurai.jpg?ssl=1"><img alt="image placeholder" ></a></span>Civilized people don’t pay up. They band together, and fight, and eliminate the problem. The EFF is launching a major <a href="https://www.eff.org/patent">initiative</a> to reform the patent system. At Stack Exchange, we’re trying to help with <a href="http://patents.stackexchange.com/">Ask Patents</a>, which will hopefully block a few bad patents before they get issued.</p>
+<p>The <a href="http://appdevelopersalliance.org/">Application Developers Alliance</a> (of which I am currently serving as the chairman of the board) is also getting involved with a series of <a href="http://devsbuild.it/devpatentsummit">Developer Patent Summits</a>, a nationwide tour of 15 cities, which will kick off a long term program to band together to fight patent trolls. Come to the summit in your city—I’ll be at the San Francisco event on April 9th—and find out what you can do to help.</p>
+			 ]]></content>
+<pubDate>2013-04-02T00:14:21+00:00</pubDate>
+<guid></guid>
+<author><![CDATA[ Joel Spolsky ]]></author>
+</item>
+<item>
+<title><![CDATA[ Free as in Fortune Cookies ]]></title>
+<link></link>
+<content><![CDATA[ 
+		<p><!-- ohai! --><a href="http://trello.com/">Trello</a> has been out for less than two years and it’s been growing like wildfire. We recently hit 1.5 million members, of whom about 1/3 perform some action every month, and our MongoDB database now contains more than 70 million cards on 3.7 million boards.</p>
+<p>So the obvious question I get all the time is, “How exactly are you supposed to make money with that?”</p>
+<p>You may have noticed that Trello is free. Not “free trial,” not “freemium,” but just plain old free. Some people have justifiably wondered if it really makes sense to pay a dozen people, nestled in fancy offices with free lunch and espresso, to develop software that we have to pay Amazon cash money to host, while not actually charging for said software. Some have commented that this business model might actually be just a few fries short of a Happy Meal.</p>
+<p><span class="side"><a href="https://i0.wp.com/www.joelonsoftware.com/wp-content/uploads/2013/04/TrelloCookie.jpg?ssl=1"><img alt="image placeholder" ></a></span>What we really wanted to do was make a free product that helps millions of people, and then find some way to get paid by the 1% of those people who get the most value out of it. The 1% are delighted to pay. They actually email us asking if there is some way they can pay us. A <a href="http://www.fancyfortunecookies.com/">fortune-cookie factory</a> was so pleased with Trello they sent us a crate of tasty fortune cookies. Custom, Trello-color fortune cookies, with Trello fortunes inside.  (Don’t tell the IRS, because that’s basically all we’ve made off of Trello to date, and I don’t think we declared it.)</p>
+<p>How do you identify the users who get the most value out of Trello? We thought any medium-to-large organization with lots of different Trello boards and many active Trello users must qualify. So then we tried to think of what kind of value-added stuff we could build and sell (for money) to organizations with lots of active users. Besides cookie dough.</p>
+<p>The most obvious things were features around security (permissions, backups, etc). Big organizations have people coming and going all the time, so they might benefit from tools that make it easy to add people to Trello en-masse, and tools to make sure that when people leave the organization, they’re removed from any boards they should be removed from. The kind of stuff that’s helpful when tens or thousands of people inside an organization are all using Trello every day. </p>
+<p>We also added a feature called “observers,” which lets you add people to a board who might have permission to watch, vote, and comment, but who can’t add cards or move cards around. This is meant to give professional landscapers, developers, web designers, consultants, and fortune-cookie factories a way to let their paying customers peek in on the progress of their project without messing it up. It’s a classic example of a feature that is only useful when you’re in that class of Trello users who get the most value out of it, so paying should be a no-brainer.</p>
+<p>We bundled these features up and called them <a href="http://trello.com/business-class">Trello Business Class</a>. It’s available today for $25 a month (per organization), or $200/year if you’d like to pay in advance. Of course, Trello itself is, and will remain, free, but starting today, we hope to actually make a little bit of walking-around money, too.</p>
+<p>In the future we’ll continue to add free features to Trello (there is a lot of exciting stuff in the hopper)—anything that is a common feature, useful to anyone, will be free. We’ll also continue to develop new Business Class features that help large organizations manage Trello, and we may come up with other things to sell to people who are getting a lot of value out of Trello. In the meantime, we sure appreciate the cookies!</p>
+			 ]]></content>
+<pubDate>2013-04-30T00:14:22+00:00</pubDate>
+<guid></guid>
+<author><![CDATA[ Joel Spolsky ]]></author>
+</item>
+<item>
+<title><![CDATA[ Victory Lap for Ask Patents ]]></title>
+<link></link>
+<content><![CDATA[ 
+		<p>There are a lot of people complaining about lousy software patents these days. I say, stop complaining, and start killing them. It took me about fifteen minutes to stop a crappy Microsoft patent from being approved. Got fifteen minutes? You can do it too.</p>
+<p>In a minute, I’ll tell you that story. But first, a little background.</p>
+<p>Software developers don’t actually <em>invent</em> very much. The number of actually novel, non-obvious <em>inventions</em> in the software industry that <em>may</em>be, in <em>some</em> universe, deserve a government-granted monopoly is, perhaps, two. </p>
+<p>The other <a href="http://papers.ssrn.com/sol3/papers.cfm?abstract_id=2016968">40,000-odd software patents</a> issued every year are mostly garbage that any working programmer could “invent” three times before breakfast. Most issued software patents aren’t “inventions” as most people understand that word. They’re just things that any first-year student learning Java should be able to do as a homework assignment in two hours.</p>
+<p>Nevertheless, a lot of companies large and small have figured out that patents are worth money, so they try to file as many as they possibly can. They figure they can generate a big pile of patents as an inexpensive byproduct of the R&amp;D work they’re doing anyway, just by sending some lawyers around the halls to ask programmers what they’re working on, and then attempting to patent everything. Almost everything they find is either obvious or has been done before, so it shouldn’t be patentable, but they use some sneaky tricks to get these things through the patent office. </p>
+<p>The first technique is to try to make the language of the patent as confusing and obfuscated as possible. That actually makes it harder for a patent examiner to identify prior art or evaluate if the invention is obvious. </p>
+<p>A bonus side effect of writing an incomprehensible patent is that it works better as an infringement trap. Many patent owners, especially the troll types, don’t really want you to <em>avoid</em> their patent. Often they actually want you to <em>infringe</em> their patent, and then build a big business that relies on that infringement, and <em>only then</em> do they want you to <em>find out</em> about the patent, so you are in the worst possible legal position and can be extorted successfully. The harder the patent is to read, the more likely it will be inadvertently infringed.</p>
+<p><span class="side"><a href="https://i0.wp.com/www.joelonsoftware.com/wp-content/uploads/2013/07/22invent.jpg?ssl=1"><img alt="image placeholder" ></a></span>The second technique to getting bad software patents issued is to use a thesaurus. Often, software patent applicants make up new terms to describe things with perfectly good, existing names. A lot of examiners will search for prior art using, well, search tools. They have to; no single patent examiner can possibly be aware of more than (rounding to nearest whole number) 0% of the prior art which might have invalidated the application.</p>
+<p>Since patent examiners rely so much on keyword searches, when you submit your application, if you can change some of the keywords in your patent to be different than the words used everywhere else, you might get your patent through even when there’s blatant prior art, because by using weird, made-up words for things, you’ve made that prior art harder to find. </p>
+<p>Now on to the third technique. Have you ever seen a patent application that appears ridiculously broad? (“Good lord, they’re trying to patent CARS!”). Here’s why. The applicant is deliberately overreaching, that is, striving to get the broadest possible patent knowing that the worst thing that can happen is that the patent examiner whittles their claims down to what they were entitled to patent anyway.</p>
+<p>Let me illustrate that as simply as I can. At the heart of a patent is a list of claims: the things you allege to have invented that you will get a monopoly on if your patent is accepted.</p>
+<p>An example might help. Imagine a simple application with these three claims:</p>
+<p>1. A method of transportation<br>2. The method of transportation in claim 1, wherein there is an engine connected to wheels<br>3. The method of transportation in claim 2, wherein the engine runs on water</p>
+<p>Notice that claim 2 mentions claim 1, and narrows it… in other words, it claims a strict subset of things from claim 1.</p>
+<p>Now, suppose you invented the water-powered car. When you submit your patent, you might submit it this way even knowing that there’s prior art for “methods of transportation” and you can’t really claim all of them as your invention. The theory is that (a) hey, you might get lucky! and (b) even if you don’t get lucky and the first claim is rejected, the narrower claims will still stand.</p>
+<p>What you’re seeing is just a long shot lottery ticket, and you have to look deep into the narrower claims to see what they really expect to get. And you never know, the patent office might be asleep at the wheel and BOOM you get to extort everyone who makes, sells, buys, or rides transportation.</p>
+<p>So anyway, a lot of crappy software patents get issued and the more that get issued, the worse it is for software developers.</p>
+<p>The patent office got a little bit of heat about this. The America Invents Act changed the law to allow the public to submit examples of prior art while a patent application is being examined. And that’s why the USPTO asked us to set up <a href="http://askpatents.com/">Ask Patents</a>, a Stack Exchange site where software developers like you can submit examples of prior art to stop crappy software patents even before they’re issued.</p>
+<p>Sounds hard, right?</p>
+<p><span class="side"><a href="https://i0.wp.com/www.joelonsoftware.com/wp-content/uploads/2013/07/22stack.jpg?ssl=1"><img alt="image placeholder" ></a></span>At first I honestly thought it was going to be hard. Would we even be able to find vulnerable applications? The funny thing is that when I looked at a bunch of software patent applications at random I came to realize that they were <em>all</em> bad, which makes our job much easier.</p>
+<p>Take patent application <a href="http://www.google.com/patents/us20130063492">US 20130063492 A1</a>, submitted by Microsoft. An Ask Patent user submitted <a href="http://patents.stackexchange.com/questions/3566/call-for-prior-art-microsoft-scaling-based-on-pixel-density">this call for prior art</a> on March 26th. </p>
+<p>I tried to find prior art for this just to see how hard it was. First I read the application. Well, to be honest, I kind of glanced at the application. In fact I skipped the abstract and the description and went straight to the claims. Dan Shapiro has great blog post called <a href="http://www.danshapiro.com/blog/2010/09/how-to-read-a-patent-in-60-second/">How to Read a Patent in 60 Seconds</a> which taught me how to do this.</p>
+<p>This patent was, typically, obfuscated, and it used terms like “pixel density” for something that every other programmer in the world would call “resolution,” either accidentally (because Microsoft’s lawyers were not programmers), or, more likely, because the obfuscation makes it that much harder to search.</p>
+<p>Without reading too deeply, I realized that this patent is basically trying to say “Sometimes you have a picture that you want to scale to different resolutions. When this happens, you might want to have multiple versions of the image available at different resolutions, so you can pick the one that’s closest and scale that.”</p>
+<p>This didn’t seem novel to me. I was pretty sure that the Win32 API already had a feature to do something like that. I remembered that it was common to provide multiple icons at different resolutions and in fact I was pretty sure that the operating system could pick one based on the resolution of the display. So I spent about a minute with Google and eventually (<em>bing!</em>) found this interesting document entitled <a href="http://www.scribd.com/doc/132533533/Writing-DPI-Aware-Applications">Writing DPI-Aware Win32 Applications [PDF]</a> written by Ryan Haveson and Ken Sykes at, what a coincidence, Microsoft. </p>
+<p>And it was written in 2008, while Microsoft’s new patent application was trying to claim that this “invention” was “invented” in 2011. Boom. Prior art found, and deployed.</p>
+<p>Total time elapsed, maybe 10 minutes. One of the participants on Ask Patents pointed out that the patent application referred to something called “scaling sets.” I wasn’t sure what that was supposed to mean but I found a specific part of the older Microsoft document that demonstrated this “invention” without using the same word, so I edited my answer a bit to point it out. <a href="http://patents.stackexchange.com/a/3569">Here’s my complete answer on AskPatents</a>.</p>
+<p>Mysteriously, whoever it was that posted the request for prior art checked the <em>Accepted</em> button on Stack Exchange. We thought this might be the patent examiner, but it was posted with a generic username.</p>
+<p>At that point I promptly forgot about it, until May 21 (two months later), when I got this email from Micah Siegel (Micah is our full-time patent expert):</p>
+<blockquote style="MARGIN-RIGHT: 0px" dir="ltr">
+<p><tt>The USPTO rejected Microsoft's Resizing Imaging Patent!</tt></p>
+<p><tt>The examiner referred specifically to Prior Art cited in Joel's answer ("Haveson et al").</tt></p>
+<p><tt>Here is the actual document rejecting the patent. It is a clean sweep starting on page 4 and throughout, basically citing rejecting the application as obvious in view of Haveson.</tt></p>
+</blockquote>
+<p>Micah showed me a document from the USPTO confirming that they had rejected the patent application, and the rejection relied very heavily on the document I found. This was, in fact, the first “confirmed kill” of Ask Patents, and it was really surprisingly easy. I didn’t have to do the hard work of studying everything in the patent application and carefully proving that it was all prior art: the examiner did that for me. (It’s a pleasure to read him demolish the patent in question, all twenty claims, if that kind of schadenfreude amuses you).</p>
+<blockquote style="MARGIN-RIGHT: 0px" dir="ltr">
+<p>(If you want to see the rejection, go to <a href="http://portal.uspto.gov/pair/PublicPair">Public Pair</a> and search for publication number <strong>US 20130063492 A1</strong>. Click on <em>Image File Wrapper</em>, and look at the non-final rejection of 4-11-2013. Microsoft is, needless to say, appealing the decision, so this crappy patent may re-surface.) <strong>Update October 2013: the patent received a FINAL REJECTION from the USPTO!</strong></p>
+</blockquote>
+<p>There is, though, an interesting lesson here. Software patent applications are of uniformly poor quality. They are remarkably easy to find prior art for. Ask Patents can be used to block them with very little work. And this kind of individual destruction of one software patent application at a time might start to make a dent in the mountain of bad patents getting granted.</p>
+<p>My dream is that when big companies hear about how friggin’ easy it is to block a patent application, they’ll use Ask Patents to start messing with their competitors. How cool would it be if Apple, Samsung, Oracle and Google got into a Mexican Standoff on Ask Patents? If each of those companies had three or four engineers dedicating a few hours every day to picking off their competitors’ applications, the number of granted patents to those companies would grind to a halt. Wouldn’t that be something!</p>
+<p>Got 15 minutes? Go to <a href="http://patents.stackexchange.com/">Ask Patents</a> right now, and see if <a href="http://patents.stackexchange.com/questions/tagged/prior-art-request?sort=active&amp;pagesize=25">one of these RFPAs</a> covers a topic you know something about, and post any examples you can find. They’re hidden in plain view; most of the prior art you need for software patents can be found on Google. Happy hunting!<!-- testing! --></p>
+			 ]]></content>
+<pubDate>2013-07-22T00:14:23+00:00</pubDate>
+<guid></guid>
+<author><![CDATA[ Joel Spolsky ]]></author>
+</item>
+<item>
+<title><![CDATA[ Trello, Inc. ]]></title>
+<link></link>
+<content><![CDATA[ 
+		<p>Hello? is this thing on?</p>
+<p>I’m not sure if I even know how to operate this “blog” device any more. It’s been a year since my last post. I’m <a href="http://joelonsoftware.com/items/2010/03/14.html">retired</a> from blogging, remember?</p>
+<p>Want to hear something funny? The only way I can post blog posts is by remote-desktopping into a carefully preserved Windows 7 machine which we keep in a server closet running a bizarrely messed-up old copy of CityDesk which I somehow hacked together and which only runs on that particular machine. The shame!</p>
+<p>I do need to fill you in on some exciting<em> Trello News, </em>though. As you no doubt know, <a href="https://trello.com/">Trello</a> is the amazing visual project management system we developed at Fog Creek.</p>
+<p><span class="side"><a href="https://i0.wp.com/www.joelonsoftware.com/wp-content/uploads/2014/07/24-ss.png?ssl=1"><img alt="image placeholder" ></a></span></p>
+<p>Let me catch you up. As legend has it, back in yonder days, early twenty-oh-eleven, we launched a modest little initiative at Fog Creek to try to come up with new product ideas. We peeled off eight developers. The idea was that they would break into four teams. Two people each. Each team would work for a few months building a prototype or MVP for some product idea. Hopefully, at least one of those ideas would turn into something people wanted.</p>
+<p>One of those teams started working on the concept that became Trello. The idea seemed so good that we doubled that team to four developers. The more we played around with it, the better we liked it. Within nine months, it was starting to look good enough to go public with, so we <a href="http://joelonsoftware.com/items/2011/09/15.html">launched Trello at TechCrunch Disrupt</a> to great acclaim and immediately got our first batch of users.</p>
+<p>Over the next three years, Trello showed some real traction. The team grew to about 18 people, almost all in engineering. We did <a href="https://itunes.apple.com/us/app/trello-organize-anything/id461504587?mt=8">iPhone, iPad</a>, <a href="https://play.google.com/store/apps/details?id=com.trello&amp;hl=en">Android</a>, and Web versions. And <a href="http://www.amazon.com/gp/mas/dl/android?p=com.trello">Kindle</a>. Oh and <a href="http://blog.trello.com/trello-on-your-wrist/">Android Wear</a>.  The user base grew steadily to 4.6 million people.</p>
+<p><img alt="image placeholder" ></p>
+<p>Zowie.</p>
+<p>Here are some things that surprised me:</p>
+<ul>
+<li>We’ve successfully made a non-developer product that actually appeals to civilians. We tried to avoid the software developer niche this time, and it worked. I think that’s because Trello is <em>visual.</em> The board / card metaphor makes every board instantly understandable, which seems to attract all types of users who traditionally had never found online project management to be useful or worth doing.</li>
+<li>It spreads like crazy. It’s a gas that expands to fill all available space. Somebody finds out about Trello from their reading group and adopts it at work; pretty soon their whole company has hundreds of Trello boards for everything from <a href="https://trello.com/b/gHooNW9I/ue4-roadmap">high level road maps</a> to a list of snacks that need to be bought for the break room.</li>
+<li>People love it. We regularly monitor Twitter for mentions of Trello and the amount of positive sentiment out there is awe-inspiring.</li>
+</ul>
+<p>We launched something called <a href="https://trello.com/business-class">Trello Business Class</a>, which, for a small fee, provides all kinds of advanced administration features so that the larger organizations using Trello can manage it better, and Hey Presto, Trello was making money!</p>
+<p><span class="side"><a href="https://i0.wp.com/www.joelonsoftware.com/wp-content/uploads/2014/07/24Taco.jpg?ssl=1"><img alt="image placeholder" ></a><br>
+<span class="caption">Taco got big, too</span></span>In the meantime, we started getting calls from investors. “Can we invest in Trello?” they asked. They were starting to notice that whenever they looked around their portfolio companies all they saw was Trello boards everywhere.</p>
+<p>We didn’t really need the money; Fog Creek is profitable and could afford to fund Trello development to profitability. And when we told the investors that they could take a minority, non-controlling stake in Fog Creek, we had to start explaining about our culture and our developer tools and our profit sharing plans and our free lunches and private offices and whatnot, and they got confused and said, “hmm, why don’t you keep all that, we just want to invest in Trello.”</p>
+<p>Now, we didn’t <em>need</em> the money, but we certainly <em>like</em> money. We had a bunch of ideas for ways we could make Trello grow faster and do all kinds of astonishing new features and hire sales and marketing teams to work on Trello Business Class. We  would have gotten around to all that <em>eventually</em>, but not as quickly as we could with a bit of folding money.</p>
+<p>Which lead to this fairly complicated plan. We spun out Trello into its own company, Trello Inc., and allowed outside investors to buy a minority stake in that. So now, Trello and Fog Creek are officially separate companies. Trello has a bunch of money in the bank to operate independently. <a href="http://www.fogcreek.com/">Fog Creek</a> will continue to build <a href="https://www.fogcreek.com/FogBugz/">FogBugz</a> and <a href="https://www.fogcreek.com/kiln/">Kiln</a> and continue to develop new products every once in a while. <a href="https://twitter.com/michaelpryor">Michael Pryor</a>, who co-founded Fog Creek with me in 2000, will be CEO of Trello.</p>
+<p>So, yeah. This is the point at which old-time readers of this blog point out that <a href="http://joelonsoftware.com/articles/VC.html">the interest of VCs is not always aligned with the interest of founders</a>, and VCs often screw up the companies they invest in.</p>
+<p>That’s mostly true, but not universal. There are smart, founder-friendly VCs out there. And with Trello (and Stack Overflow, for that matter), we didn’t take any outside investment until we already had traction and revenue, so we could choose the investors that we thought were the most entrepreneur-friendly, and we kept control of the company.</p>
+<p>In the case of Trello, we had so much interest from investors that we were even able to limit ourselves to investors who were already investors in Stack Exchange and still get the price and terms we wanted. The advantage of this is that we know them, they know us, and they’re aligned enough not to fret about any conflicts of interest which might arise between Stack Exchange and Trello because they have big stakes in both.</p>
+<p>Both <a href="http://indexventures.com/">Index Ventures</a> and <a href="http://sparkcapital.com/">Spark Capital</a> will co-lead the investment in Trello, with <a href="http://bijansabet.com/">Bijan Sabet</a> from Spark joining our board. Bijan was an early investor in Twitter, Tumblr, and Foursquare which says a lot about the size of our ambitions for Trello. The other two members of the board are Michael and me.</p>
+<p>Even though Fog Creek, Trello, and Stack Exchange are now three separate companies, they are all running basically the same operating system, based on the original microprocessor architecture known as “making a company where the best developers want to work,” or, in simpler terms, treating people well.</p>
+<p>T<span class="side"><a href="https://i0.wp.com/www.joelonsoftware.com/wp-content/uploads/2014/07/24cawfee.jpg?ssl=1"><img alt="image placeholder" ></a></span>his operating system applies both to the physical layer (beautiful daylit private <a href="http://www.fogcreek.com/careers/">offices</a>, allowing <a href="http://blog.stackoverflow.com/2013/02/why-we-still-believe-in-working-remotely/">remote work</a>, catered lunches, <a href="https://www.joelonsoftware.com/articles/FieldGuidetoDevelopers.html">height-adjustable desks and Aeron chairs</a>, and top-tier coffee), the application layer (health insurance where everything is paid for, liberal vacations, family-friendly policies, reasonable work hours), the presentation layer (<a href="https://www.joelonsoftware.com/articles/fog0000000043.html">clean and pragmatic programming practices</a>, <a href="http://avc.com/2012/02/the-management-team-guest-post-from-joel-spolsky/">pushing decisions down to the team</a>, <a href="http://www.amazon.com/Smart-Gets-Things-Done-Technical/dp/1590598385">hiring smart people</a> and letting them get things done, and a commitment to <a href="http://blog.fogcreek.com/announcing-the-fog-creek-fellowship/">inclusion</a> and <a href="https://www.joelonsoftware.com/articles/FogCreekMBA.html">professional development</a>), and mostly, the human layer, where no matter what we do, it’s guided first and foremost by obsession over being fair, humane, kind, and treating each other like family. (Did I tell you I got <a href="https://twitter.com/spolsky/status/265081187427569665">married</a>?)</p>
+<p>So, yeah, there are three companies here, with different products, but every company has a La Marzocco Linea espresso machine in every office, and every company gives you $500 when you or your partner has a baby to get food delivered, and when we’re trying to figure out how to manage people, our number one consideration is how to do so fairly and compassionately.</p>
+<p>That architecture is all the stuff I spent ten years ranting on this blog about, but y’all don’t listen, so I’m just going to have to build company after company that runs my own wacky operating system, and eventually you’ll catch on. It’s OK to put people first. You don’t have to be a psychopath or work people to death or create heaps of messy code or work in noisy open offices.</p>
+<p>Anyway, that’s the news from our neck of the woods. If the mission of Trello sounds exciting we’ll be hiring a bunch of people soon so please apply!</p>
+			 ]]></content>
+<pubDate>2014-07-24T00:14:24+00:00</pubDate>
+<guid></guid>
+<author><![CDATA[ Joel Spolsky ]]></author>
+</item>
+<item>
+<title><![CDATA[ Stack Exchange Raises $40m ]]></title>
+<link></link>
+<content><![CDATA[ 
+		<p><!-- yay money --> </p>
+<p>Today <a href="http://stackexchange.com/">Stack Exchange</a> is pleased to announce that we have raised $40 million, mostly from <a href="http://a16z.com/">Andreessen Horowitz</a>.</p>
+<p>Everybody wants to know what we’re going to do with all that money. First of all, of course we’re going to gold-plate the Aeron chairs in the office. Then we’re going to upgrade the game room, and we’re already sending lox platters to our highest-rep users.</p>
+<p>But I’ll get into that in a minute. First, let me catch everyone up on what’s happening at Stack Exchange.</p>
+<p>In 2008, <a href="http://blog.codinghorror.com/">Jeff Atwood</a> and I set out to fix a problem for programmers. At the time, getting answers to programming questions online was super annoying. The answers that we needed were hidden behind paywalls, or buried in thousands of pages of stale forums.</p>
+<p>So we built <a href="http://stackoverflow.com/">Stack Overflow</a> with a single-minded, compulsive, fanatical obsession with serving programmers with a better Q&amp;A site.</p>
+<p>Everything about how Stack Overflow works today was designed to make programmers’ jobs easier. We let members vote up answers, so we can show you the best answer first. We don’t allow opinionated questions, because they descend into flame wars that don’t help people who need an answer right now. We have scrupulously avoided any commercialization of our editorial content, because we want to have a site that programmers can trust.</p>
+<p>Heck, we don’t even allow animated ads, even though they are totally standard on every other site on the Internet, because it would be disrespectful to programmers to strain their delicate eyes with a dancing monkey, and we can’t serve them 100% if we are distracting them with a monkey. That would only be serving them 98%. And we’re OBSESSED, so 98% is like, we might as well close this all down and go drive taxis in Las Vegas.</p>
+<p>Anyway, it worked! Entirely thanks to you. An insane number of developers stepped up to pass on their knowledge and help others. Stack Overflow quickly grew into the largest, most trusted repository of programming knowledge in the world.</p>
+<p>Quickly, Jeff and I discovered that serving programmers required more than just code-related questions, so we built <a href="http://serverfault.com/">Server Fault</a> and <a href="http://superuser.com/">Super User</a>. And when that still didn’t satisfy your needs, we set up <a href="http://stackexchange.com/">Stack Exchange</a> so the community could create sites on new topics. Now when a programmer has to set up a server, or a PC, or a database, or Ubuntu, or an iPhone, they have a place to go to ask those questions that are full of the people who can actually help them do it.</p>
+<p>But you know how programmers are. They “have babies.”  Or “take pictures of babies.” So our users started building Stack Exchange sites on unrelated topics, like <a href="http://parenting.stackexchange.com/">parenting</a> and <a href="http://photo.stackexchange.com/">photography</a>, because the programmers we were serving expected—nay, demanded!—a place as awesome as Stack Overflow to ask about baby feeding schedules and f-stops and whatnot.</p>
+<p>And we did such a good job of serving programmers that a few smart non-programmers looked at us and said, “Behold! I want that!” and we thought, hey!  What works for developers should work for a lot of other people, too, as long as they’re willing to think like developers, which is the best way to think. So, we decided that anybody who wants to get with the program is welcome to join in our plan. And these sites serve their own communities of, you know, <a href="http://bicycles.stackexchange.com/">bicycle mechanics</a>, or what have you, and make the world safer for the Programmer Way Of Thinking and thus serve programmers by serving bicycle mechanics.</p>
+<p>In the five years since then, our users have built 133 communities. Stack Overflow is still the biggest. It reminds me of those medieval maps of the ancient world. The kind that shows a big bustling city (Jerusalem) smack dab in the middle, with a few smaller settlements around the periphery. (Please imagine Gregorian chamber music).</p>
+<p><span class="side"><a href="https://i0.wp.com/www.joelonsoftware.com/wp-content/uploads/2015/01/Jerusalem.jpg?ssl=1"><img alt="image placeholder" ></a><br><span class="caption"><a href="http://en.wikipedia.org/wiki/History_of_Jerusalem_during_the_Middle_Ages">View of Jerusalem</a></span></span>Stack Overflow is the big city in the middle. Because the programmer-city worked so well, people wanted to ask questions about other subjects, so we let them build other Q&amp;A villages in the catchment area of the programmer-city. Some of these Q&amp;A villages became cities of their own. The <a href="http://math.stackexchange.com/">math</a> <a href="http://mathoverflow.net/">cities</a> barely even have any programmers and they speak their own weird language. They are math-Jerusalem. They makes us very proud. Even though they don’t directly serve programmers, we love them and they bring a little tear to our eyes, like the other little villages, and they’re certainly making the Internet—and the world—better, so we’re devoted to them.</p>
+<p>One of these days some of those villages will be big cities, so we’re committed to keeping them clean, and pulling the weeds, and helping them grow.</p>
+<p>But let’s go back to programmer Jerusalem, which—as you might expect—is full of devs milling about, building the ENTIRE FUTURE of the HUMAN RACE, because, after all, <a href="http://www.wsj.com/articles/SB10001424053111903480904576512250915629460">software is eating the world</a> and writing software is just writing a script for how the future will play out.</p>
+<p>So given the importance of software and programmers, you might think they all had wonderful, satisfying jobs that they love.</p>
+<p>But sadly, we saw that was not universal. Programmers often have crappy jobs, and their bosses often poke them with sharp sticks. They are underpaid, and they aren’t learning things, and they are sometimes overqualified, and sometimes underqualified. So we decided we could actually make all the programmers happier if we could move them into better jobs.</p>
+<p>That’s why we built <a href="http://careers.stackoverflow.com/">Stack Overflow Careers</a>. This was the first site that was built for developers, not recruiters. We banned the scourge of contingency recruiters (even if they have big bank accounts and are just LINING UP at the Zion Gate trying to get into our city to feed on programmer meat, but, to hell with them). We are SERVING PROGRAMMERS, not spammers. Bye Felicia.</p>
+<p><strong>Which brings us to 2015.</strong></p>
+<p>The sites are still growing like crazy. By our measurements, the Stack Exchange network is already in the top 50 of all US websites, ranked by number of unique visitors, with traffic still growing at 25% annually. The company itself has passed 200 employees worldwide, with big plush offices in Denver, New York, and London, and dozens of amazing people who work from the comfort of their own homes. (By the way, if 200 people seems like a lot, keep in mind that more than half of them are working on Stack Overflow Careers).</p>
+<p>We could just slow down our insane hiring pace and get profitable right now, but it would mean foregoing some of the investments that let us help more developers. To be honest, we literally can’t keep up with the features we want to build for our users. The code is not done yet—we’re dedicating a lot of resources to the core Q&amp;A engine. This year we’ll work on improving the experience for both new users and highly experienced users.</p>
+<p>And let’s not forget Stack Overflow Careers. I believe it is, bar-none, the single best job board for developer candidates, which should  automatically make it the best place for employers to find developer talent. There’s a LOT more to be done to serve developers here and we’re just getting warmed up.</p>
+<p><img alt="image placeholder" ></p>
+<p>So that’s why we took this new investment of $40m.</p>
+<p>We’re ecstatic to have Andreessen Horowitz on board. The partners there believe in our idea of programmers taking over (it was Marc Andreessen who coined the phrase “Software is eating the world”). Chris Dixon has been a personal investor in the company since the beginning and has always known we’d be the obvious winner in the Q&amp;A category, and will be joining our board of directors as an observer.</p>
+<p>This is not the first time we’ve raised money; we’re proud to have previously taken investments from Union Square Ventures, Index Ventures, Spark Capital, and Bezos Expeditions. We only take outside money when we are 100% confident that the investors share our philosophy completely and after our lawyers have done a ruthless (sorry, investors) job of maintaining control so that it is literally impossible for anyone to mess up our vision of fanatically serving the people who use our site, and continuing to make the Internet a better place to get expert answers to your questions.</p>
+<p>For those of you who have been with us since the early days of Our Incredible Journey, thank you. For those of you who are new, welcome. And if you want to learn more, check out our <a href="http://stackexchange.com/about">hott new “about” page</a>. Or <a href="http://meta.stackexchange.com/">ask</a>!</p>
+			 ]]></content>
+<pubDate>2015-01-20T00:14:25+00:00</pubDate>
+<guid></guid>
+<author><![CDATA[ Joel Spolsky ]]></author>
+</item>
+<item>
+<title><![CDATA[ Introducing HyperDev ]]></title>
+<link></link>
+<content><![CDATA[ 
+		<p>One more thing…</p>
+<p>It’s been awhile since we launched a whole new product at Fog Creek Software (the last one was <a href="https://trello.com/">Trello</a>, and that’s <a href="http://www.forbes.com/sites/alexkonrad/2016/05/23/trello-get-serious-about-big-businesses-as-it-passes-1-1-million-daily-users-and-triples-sales/#fed92956ce27">doing pretty well</a>). Today we’re announcing the public beta of <a href="https://hyperdev.com/">HyperDev</a>, a developer playground for building full-stack web-apps fast.</p>
+<p>HyperDev is going to be the fastest way to bang out code and get it running on the internet. We want to eliminate 100% of the complicated administrative details around getting code up and running on a website. The best way to explain that is with a little tour.</p>
+<p>Step one. You go to hyperdev.com.</p>
+<p>Boom. Your new website is already running. You have your own private virtual machine (well, really it’s a container but you don’t have to care about that or know what that means) running on the internet at its own, custom URL which you can already give people and they can already go to it and see the simple code we started you out with.</p>
+<p>All that happened just because you went to hyperdev.com.</p>
+<p>Notice what you DIDN’T do.</p>
+<ul>
+<li>You didn’t make an account.</li>
+<li>You didn’t use Git. Or any version control, really.</li>
+<li>You didn’t deal with name servers.</li>
+<li>You didn’t sign up with a hosting provider.</li>
+<li>You didn’t provision a server.</li>
+<li>You didn’t install an operating system or a LAMP stack or Node or operating systems or anything.</li>
+<li>You didn’t configure the server.</li>
+<li>You didn’t figure out how to integrate and deploy your code.</li>
+</ul>
+<p><span class="side"><a href="https://i0.wp.com/www.joelonsoftware.com/wp-content/uploads/2016/05/hyperdev_ss1.png?ssl=1"><img alt="image placeholder" ></a></span>You just went to hyperdev.com. Try it now!</p>
+<p>What do you see in your browser?</p>
+<p>Well, you’re seeing a basic IDE. There’s a little button that says SHOW and when you click on that, another browser window opens up showing you your website as it appears to the world. Notice that we invented a unique name for you.</p>
+<p>Over there in the IDE, in the bottom left, you see some client side files. One of them is called index.html. You know what to do, right? Click on index.html and make a couple of changes to the text.</p>
+<p>Now here’s something that is already a little bit magic… As you type changes into the IDE, without saving, those changes are deploying to your new web server and we’re refreshing the web browser for you, so those changes are appearing almost instantly, both in your browser and for anyone else on the internet visiting your URL.</p>
+<p><img alt="image placeholder" ></p>
+<p>Again, notice what you DIDN’T do:</p>
+<ul>
+<li>You didn’t hit a “save” button.</li>
+<li>You didn’t commit to Git.</li>
+<li>You didn’t push.</li>
+<li>You didn’t run a deployment script.</li>
+<li>You didn’t restart the web server.</li>
+<li>You didn’t refresh the page on your web browser.</li>
+</ul>
+<p>You just typed some changes and BOOM they appeared.</p>
+<p>OK, so far so good. That’s a little bit like jsFiddle or Stack Overflow snippets, right? NBD.</p>
+<p>But let’s look around the IDE some more. In the top left, you see some server side files. These are actual code that actually runs on the actual (virtual) server that we’re running for you. It’s running node. If you go into the server.js file you see a bunch of JavaScript. Now change something there, and watch your window over on the right.</p>
+<p>Magic again… the changes you are making to the server-side Javascript code are already deployed and they’re already showing up live in the web browser you’re pointing at your URL.</p>
+<p>Literally every change you make is instantly saved, uploaded to the server, the server is restarted with the new code, and your browser is refreshed, all within half a second. So now your server-side code changes are instantly deployed, and once again, notice that you didn’t:</p>
+<ul>
+<li>Save</li>
+<li>Do Git incantations</li>
+<li>Deploy</li>
+<li>Buy and configure a continuous integration solution</li>
+<li>Restart anything</li>
+<li>Send any SIGHUPs</li>
+</ul>
+<p>You just changed the code and it was already reflected on the live server.</p>
+<p>Now you’re starting to get the idea of HyperDev. It’s just a SUPER FAST way to get running code up on the internet without dealing with any administrative headaches that are not related to your code.</p>
+<p>Ok, now I think I know the next question you’re going to ask me.</p>
+<p>“Wait a minute,” you’re going to ask. “If I’m not using Git, is this a single-developer solution?”</p>
+<p>No. There’s an Invite button in the top left. You can use that to get a link that you give your friends. When they go to that link, they’ll be editing, live, with you, in the same documents. It’s a magical kind of team programming where everything shows up instantly, like Trello, or Google Docs. It is a magical thing to collaborate with a team of two or three or four people banging away on different parts of the code at the same time without a source control system. It’s remarkably productive; you can dive in and help each other or you can each work on different parts of the code.</p>
+<p>“This doesn’t make sense. How is the code not permanently broken? You can’t just sync all our changes continuously!”</p>
+<p>You’d be surprised just how well it does work, for most small teams and most simple programming projects. Listen, this is not the future of all software development. Professional software development teams will continue to use professional, robust tools like Git and that’s great. But it’s surprising how just having continuous merging and reliable Undo solves the “version control” problem for all kinds of simple coding problems. And it really does create an insanely addictive form of collaboration that supercharges your team productivity.</p>
+<p>“What if I literally type ‘DELETE * FROM USERS’ on my way to typing ‘WHERE id=9283’, do I lose all my user data?”</p>
+<p>Erm… yes. Don’t do that. This doesn’t come up that often, to be honest, and we’re going to add the world’s simplest “branch” feature so that optionally you can have a “dev” and “live” branch, but for now, yeah, you’d be surprised at how well this works in practice even though in theory it sounds terrifying.</p>
+<p>“Does it have to be JavaScript?”</p>
+<p>Right now the server we gave you is running Node so today it has to be JavaScript. We’ll add other languages soon.</p>
+<p>“What can I do with my server?”</p>
+<p>Anything you can do in Node. You can add any package you want just by editing package.json. So literally any working JavaScript you want to cut and paste from Stack Overflow is going to work fine.</p>
+<p>“Is my server always up?”</p>
+<p>If you don’t use it for a while, we’ll put your server to sleep, but it will never take more than a few seconds to restart. But yes for all intents and purposes, you can treat it like a reasonably reliably, 24/7 web server. This is still a beta so don’t ask me how many 9’s. You can have all the 8’s you want.</p>
+<p>“Why would I trust my website to you? What if you go out of business?”</p>
+<p>There’s nothing special about the container we gave you; it’s a generic VM running Node. There’s nothing special about the way we told you to write code; we do not give you special frameworks or libraries that will lock you in. Download your source code and host it anywhere and you’re back in business.</p>
+<p>“How are you going to make money off of this?”</p>
+<p>Aaaaaah! why do you care!</p>
+<p>But seriously, the current plan is to have a free version for public / open source code you don’t mind sharing with the world. If you want private code, much like private repos, there will eventually be paid plans, and we’ll have corporate and enterprise versions. For now it’s all just a beta so don’t worry too much about that!</p>
+<p>“What is the point of this Joel?”</p>
+<p>As developers we have fantastic sets of amazing tools for building, creating, managing, testing, and deploying our source code. They’re powerful and can do anything you might need. But they’re usually too complex and too complicated for very simple projects. Useful little bits of code never get written because you dread the administration of setting up a new dev environment, source code repo, and server. New programmers and students are overwhelmed by the complexity of distributed version control when they’re still learning to write a while loop. Apps that might solve real problems never get written because of the friction of getting started.</p>
+<p>Our theory here is that HyperDev can remove all the barriers to getting started and building useful things, and more great things will get built.</p>
+<p>“What now?”</p>
+<p>Really? Just go to <a href="https://hyperdev.com/">HyperDev</a> and start playing!</p>
+			 ]]></content>
+<pubDate>2016-05-31T00:14:26+00:00</pubDate>
+<guid></guid>
+<author><![CDATA[ Joel Spolsky ]]></author>
+</item>
+<item>
+<title><![CDATA[ Oh look, a new site! ]]></title>
+<link></link>
+<content><![CDATA[ 
+		<p>I’ve moved to WordPress. There may be some bugs!</p>
+			 ]]></content>
+<pubDate>2016-12-06T02:23:21+00:00</pubDate>
+<guid></guid>
+<author><![CDATA[ Joel Spolsky ]]></author>
+</item>
+<item>
+<title><![CDATA[ Anil Dash is the new CEO of Fog Creek Software ]]></title>
+<link></link>
+<content><![CDATA[ 
+		<p>I have some huge news to share with you.</p>
+<p>For the first time since <a href="http://fogcreek.com/">Fog Creek Software</a> was founded more than sixteen years ago, we have a new CEO, <a href="http://anildash.com/2016/12/im-at-fog-creek-and-were-introducing-gomix.html">Anil Dash</a>.</p>
+<p><img alt="image placeholder" ></p>
+<h2>Who?</h2>
+<p>I’ve been friends with Anil since the earliest days of Fog Creek Software. He’s a pioneer of blogging (<a href="http://anildash.com/1999/07/birth-of-a-webl.html">beat</a> <a href="http://joelonsoftware.com/news/fog0000000244.html">me</a> to it by about five months), and has been a tech industry entrepreneur, activist, and writer for almost two decades.</p>
+<p>You can read Anil’s full bio <a href="http://anildash.com/about.html">here</a>. For those of you that want the top level bullet points:</p>
+<ul>
+<li>Blogging pioneer</li>
+<li>Helped start Six Apart, the company behind Moveable Type and TypePad</li>
+<li>Founder of <a href="https://en.wikipedia.org/wiki/Expert_Labs">Expert Labs</a>, ThinkUp, and <a href="https://makerbase.co/">MakerBase</a> (which is joining Fog Creek)</li>
+<li>Advisor and board member to a whole slew of companies and non-profits</li>
+<li>Lives in New York City, with his wife <a href="http://alainabrowne.com/">Alaina Browne</a> and their son Malcolm.</li>
+</ul>
+<p>I’ve gotten to know Anil much better since he joined the Stack Overflow Board of Directors in 2011 and discovered that he’s a remarkable creative thinker and really, really understands developers, how the work developers do fits into society, and thus, how we can make technology more humane and ethical from our unique position of making things for software developers. There is no single person I would trust more to help Fog Creek figure out how to make something big, important, and valuable.</p>
+<p>Fog Creek is a weird company here, with unique values that you don’t find in a lot of other companies. That’s why we’re so successful, and that’s why we love working here. Some of the weird stuff we do is non-negotiable. We would never dream of having just any competent person from outside the company come in, let alone give them the CEO role, if we weren’t convinced that they were 100% fanatical and excited about Fog Creek Software’s unique operating system. We’ve been friends with Anil for so long that we’re confident that the combination of his talents and worldview with our quirky operating system will be a stellar combination.</p>
+<p>In short, we need Anil to help support us with ideas and leadership for HyperDev (now renamed <a href="https://gomix.com">Gomix</a>) and any future products we come up with, and we need his soapbox and industry connections to continue to keep Fog Creek Software relevant. Thus I think the perfect position for him is as CEO of Fog Creek Software.</p>
+<p>A typical startup is built around a single product, and some theory that people will pay money for that product. This theory eventually become false, and <a href="http://www.towerrecordsmovie.com/">the company goes away</a>. But Fog Creek was different. We were just a place where great people come together to build great things. People come here because of the other people that are here. And that makes it fundamentally much stronger and longer lasting. We build new products every year, some of which work, and some of which don’t; we can spin off other companies; the individuals who work here can change; but as long as we remain dedicated to being a place where great people come together to build great things we’re going to remain a highly respected and successful company for a long long time.</p>
+<p><img alt="image placeholder" ></p>
+<h2>What are you doing, Joel?</h2>
+<p>I’m the full-time CEO of <a href="http://stackoverflow.com/">Stack Overflow</a>, which just hit 300 employees and really takes all my time now.</p>
+<h2>Where’s Michael Pryor?</h2>
+<p>He’s the full-time CEO of <a href="https://trello.com/">Trello</a>, which is about to hit 100 employees and takes all of his time.</p>
+<h2>So, what’s going on at Fog Creek?</h2>
+<p>Fog Creek is focused on two things:</p>
+<ul>
+<li>Fog Creek’s developer tool, <a href="http://www.fogcreek.com/fogbugz/">FogBugz,</a> is still going strong. We have a dedicated development team continuing to work on it and are still regularly releasing new features and enhancements, especially in the area of agile development.</li>
+<li>Fog Creek’s newest project, <a href="https://gomix.com/">Gomix</a> (formerly “HyperDev”) is relaunching. This is a developer playground for building full-stack web-apps fast.</li>
+</ul>
+<p>Anil as CEO will be assisted by COO Jordan Harris, and Michael and I are still heavily involved but now at the board level.</p>
+			 ]]></content>
+<pubDate>2016-12-06T14:19:23+00:00</pubDate>
+<guid></guid>
+<author><![CDATA[ Joel Spolsky ]]></author>
+</item>
+<item>
+<title><![CDATA[ RIP CityDesk ]]></title>
+<link></link>
+<content><![CDATA[ 
+		<p>Here’s a quick history of the technology behind Joel on Software.</p>
+<p>Version one was on Manila, created by <a href="http://scripting.com/">Dave Winer</a>. Dave was the one who convinced me to blog, by blogging himself, and by creating what was, I think, the first public blogging platform at editthispage.com. My site was joel.editthispage.com and back in 1999 people thought it was pretty spiffy that you could get your own subdomain like that.</p>
+<p>In order to use my own domain, I registered joelonsoftware.com and took an old IBM desktop computer (probably running Windows NT 4.0), shoved it in a closet, and <a href="https://www.joelonsoftware.com/2001/06/14/20010614/">ran my own copy of Manila</a>. The first time Slashdot linked to me it melted down. We upgraded the memory from 256M to 512M and it recovered.</p>
+<p>In those days all the cool kids wrote their own blogging platforms. I wrote <a href="https://www.joelonsoftware.com/2001/10/12/what-does-citydesk-do/">CityDesk</a>. In what turned out to be a monumentally wrong bet, I thought that people would want to blog on Windows, with all the slick WYSIWYG editing goodness that wasn’t yet available in early versions of HTML. CityDesk kept your entire website in a SQL database (Microsoft Jet, the backend of Access) and had a frontend like a word processor. Every time you needed to publish, it generated the entire site as a set of html pages, which it then uploaded to an ftp server for you. That worked “OK” for 10 pages. By the time this site was over 1000 pages, even on modern super speedy computers with flash drives, it took something like 5 minutes to publish.</p>
+<p>Over the years the CityDesk code base (VB 6.0, another bad bet) stopped running on the latest versions of Windows. Nobody else cared but by that time I was using a custom version of CityDesk which only ran on Windows XP. So until recently, I had a virtual machine set up with Windows XP running in there, and a copy of CityDesk. That virtual machine runs on a modern Windows box which I don’t use for any other purpose, so it lives under a desk in a cave somewhere and I have to remote desktop into it. Lately, I haven’t been able to do that. I’m not sure why.</p>
+<p>Doesn’t matter. <a href="https://ma.tt/">Matt Mullenweg</a> over at WordPress has been trying to get me to move Joel on Software over to WordPress for so long it’s not even funny. I finally gave in. An astonishingly talented group of people were collected who created the port you are looking at now. I owe a huge debt of gratitude to <a href="https://chrishardie.com/">Chris Hardie</a>, <a href="http://triggersandsparks.com/">Sarah Semark</a>, <a href="http://tilesandthesea.com/">Valerie Kalantyrski</a>, <a href="http://planewhimsy.com/">Michelle Langston</a>, <a href="http://danielwrobert.com/">Daniel Robert</a>, <a href="https://softmanjournal.wordpress.com/">James Tien</a>, and<br>
+<a href="http://steveseear.org">Steve Seear</a> for weeks of hard work on creating this almost perfect port of 16 years of cruft, preserving over 1000 links with redirects, hand crafting html and css to preserve awful formatting, some of which was created before CSS was in use, and doing some monumental heroics to keep just about everything about the old site in its new WordPress home.</p>
+<p>I also want to thank our host <a href="http://pressable.com/">Pressable</a>.</p>
+<p>OK, I haven’t blogged too much since getting a puppy and <a href="https://www.joelonsoftware.com/2010/03/14/puppy/">“officially” retiring on the tenth anniversary of Joel on Software</a>. I won’t have too much time to blog now, either, but now that we’re on WordPress, it’s a million times easier, so I’ll probably throw up some things here that I’ve written anyway, like internal documents from Fog Creek and Stack Overflow.</p>
+<p>See you soon!</p>
+<p> </p>
+			 ]]></content>
+<pubDate>2016-12-09T02:18:13+00:00</pubDate>
+<guid></guid>
+<author><![CDATA[ Joel Spolsky ]]></author>
+</item>
+<item>
+<title><![CDATA[ Developers are Writing the Script for the Future ]]></title>
+<link></link>
+<content><![CDATA[ 
+		<p>Last week I was invited to <a href="http://www.slush.org/">Slush</a> in Helsinki, where I gave a keynote called “Developers are Writing the Script for the Future.” Here’s a 20 minute video of that talk.</p>
+<p><span class="embed-youtube" style="text-align:center; display: block;"><iframe class="youtube-player" width="730" height="411" src="https://www.youtube.com/embed/AGyIbZotKlk?version=3&amp;rel=1&amp;showsearch=0&amp;showinfo=1&amp;iv_load_policy=1&amp;fs=1&amp;hl=en-US&amp;autohide=2&amp;wmode=transparent" allowfullscreen="true" style="border:0;" sandbox="allow-scripts allow-same-origin allow-popups allow-presentation allow-popups-to-escape-sandbox"></iframe></span></p>
+			 ]]></content>
+<pubDate>2016-12-09T18:28:39+00:00</pubDate>
+<guid></guid>
+<author><![CDATA[ Joel Spolsky ]]></author>
+</item>
+<item>
+<title><![CDATA[ Developers’ side projects ]]></title>
+<link></link>
+<content><![CDATA[ 
+		<p>Pretty much 100% of developers working for other people end up signing some kind of “proprietary invention agreement,” but almost all of them misunderstand what’s going on with that agreement. Most developers think that the work they do at work belongs to their employer, but anything they work on at home or on their own time is theirs. This is wrong enough to be dangerous.</p>
+<p>So let’s consider this question: if you’re a developer working for software company, does that company own what you do in your spare time?</p>
+<p><a href="https://i0.wp.com/www.joelonsoftware.com/wp-content/uploads/2016/12/IMG_4042-e1481320442847.jpg?ssl=1"><img alt="image placeholder" ></a>Before I start: be careful before taking legal advice from the Internet. I see enough wrong information that you could get in trouble. Non-US readers should also be aware that the law and legal practice could be completely different in their country.</p>
+<p>There are three pieces of information you would need to know to answer this question:</p>
+<p>1. What state (or country) are you employed in?</p>
+<p>There are state laws that vary from state to state which may even override specific contracts.</p>
+<p>2. What does <em>your</em> contract with your employer say?</p>
+<p>In the US, in general, courts are very lenient about letting people sign any kind of contract they want, but sometimes, state laws will specifically say “even if you sign such and such a contract, the law overrides.”</p>
+<p>3. Are you a contractor or an employee? In the US there are two different ways you might be hired, and the law is different in each case.</p>
+<p>But before I can even begin to explain these issues, we gotta break it down.</p>
+<p>Imagine that you start a software company. You need a developer. So you hire Sarah from across the street and make a deal whereby you will pay her $20 per hour and she will write lines of code for your software product. She writes the code, you pay her the $20/hour, and all is well. Right?</p>
+<p>Well… maybe. In the United States, if you hired Sarah as a contractor, she still owns the copyright on that work. That is kind of weird, because you might say, “Well, I paid her for it.” It sounds weird, but it is the default way copyright works. In fact, if you hire a photographer to take pictures for your wedding, you own the <em>copies</em> of the pictures that you get, but the photographer still owns the copyright and has the legal monopoly on making more copies of those pictures. Surprise! Same applies to code.</p>
+<p><em>Every</em> software company is going to want to own the copyright to the code that its employees write for them, so <em>no</em> software company can accept the “default” way the law works. That is why <em>all</em> software companies that are well-managed will require <em>all</em> developers, at the very least, to sign an agreement that says, at the very least, that</p>
+<ul>
+<li>in exchange for receiving a salary,</li>
+<li>the developer agrees to “assign” (give) the copyright to the company.</li>
+</ul>
+<p>This agreement can happen in the employment contract or in a separate “Proprietary Invention Assignment” contract. The way it is often expressed is by using the legal phrase <em><a href="http://en.wikipedia.org/wiki/Work_for_hire">work for hire</a></em>, which means “we have decided that the copyright will be owned by the company, not the employee.”</p>
+<p>Now, we still haven’t said anything about spare time work yet. Suppose, now, you have a little game company. Instead of making software, you knock out three or four clever games every few months. You can’t invent all the games yourself. So you go out and hire a game designer to invent games. You are going to pay the game designer $6,000 a month to invent new games. Those games will be clever and novel. They are patentable. It is important to you, as a company, to own the <em>patents</em> on the games.</p>
+<p>Your game designer works for a year and invents 7 games. At the end of the year, she sues you, claiming that she owns 4 of them, because those particular games were invented between 5pm and 9am, when she wasn’t on duty.</p>
+<p>Ooops. That’s not what you meant. You wanted to pay her for <em>all</em> the games that she invents, and you recognize that the actual <em>process of invention</em> for which you are paying her may happen at any time… on weekdays, weekends, in the office, in the cubicle, at home, in the shower, climbing a mountain on vacation.</p>
+<p>So before you hire this developer, you agree, “hey listen, I know that inventing happens all the time, and it’s impossible to prove whether you invented something while you were sitting in the chair I supplied in the cubicle I supplied or not. I don’t just want to buy your 9:00-5:00 inventions. I want them all, and I’m going to pay you a nice salary to get them all,” and she agrees to that, so now you want to sign something that says that all her inventions belong to the company for as long as she is employed by the company.</p>
+<p>This is where we are by default. This is the <em>standard</em> employment contract for developers, inventors, and researchers.</p>
+<p>Even if a company decided, “oh gosh, we don’t want to own the 5:00-9:00 inventions,” they would soon get into trouble. Why? Because they might try to take an investment, and the investor would say, “prove to me that you’re not going to get sued by some disgruntled ex-employee who claims to have invented the things that you’re selling.” The company wants to be able to pull out a list of all current and past employees, and show a contract from <em>every single one of them</em> assigning inventions to the company. This is expected as a part of due diligence in every single high tech financing, merger, and acquisition, so a software company that isn’t careful about getting these assignments is going to have trouble getting financed, or merging, or being acquired, and that ONE GUY from 1998 who didn’t sign the agreement is going to be a real jerk about signing it now, because he knows that he’s personally holding up a $350,000,000 acquisition and he can demand a lot of money to sign.</p>
+<p>So… every software company <em>tries</em> to own <em>everything</em> that its employees do. (They don’t <em>necessarily</em> enforce it in cases of unrelated hobby projects, but on paper, they probably can.)</p>
+<p>Software developers, as you can tell from this thread, found this situation to be upsetting. They always imagined that they should be able to sit in their own room at night on their own computer writing their own code for their own purposes and own the copyright and patents. So along came state legislators, in certain states (like California) but not others (not New York, for example). These state legislatures usually passed laws that said something like this:</p>
+<blockquote><p>Anything you do on your own time, with your own equipment, that is not related to your employer’s line of work is yours, even if the contract you signed says otherwise.</p></blockquote>
+<p>Because this is the law of California, this particular clause is built into the standard Nolo contract and most of the standard contracts that California law firms give their software company clients, so programmers all over the country might well have this in their contract even if their state doesn’t require it.</p>
+<p>Let’s look at that closely.</p>
+<p><em>On your own time.</em> Easy to determine, I imagine.</p>
+<p><em>With your own equipment.</em> Trivial to determine.</p>
+<p><em>Not related to your employer’s line of work.</em> Um, wait. What’s the definition of <em>related?</em> If my employer is Google, they do <em>everything.</em> They made a goddamn HOT AIR BALLOON with an internet router in it once. Are hot air balloons related? Obviously search engines, mail, web apps, and advertising are related to Google’s line of work. Hmmm.</p>
+<p><a href="https://en.wikipedia.org/wiki/Project_Loon"><img alt="image placeholder" ></a></p>
+<p>OK, what if my employer is a small company making software for the legal industry. Would software for the accounting industry be “related”?</p>
+<p>I don’t know. It’s a big enough ambiguity that you could drive a truck through it. It’s probably going to depend on a judge or jury.</p>
+<p>The judge (or jury) is <em>likely</em> to be friendly to the poor employee against Big Bad Google, but you can’t depend on it.</p>
+<p>This ambiguity is meant to create enough of a chilling effect on the employee working in their spare time that for all intents and purposes it achieves the effect that the employer wants: the employee doesn’t bother doing any side projects that might turn into a business some day, and the employer gets a nice, refreshed employee coming to work in the morning after spending the previous evening watching TV.</p>
+<p>So… to answer the question. There is unlikely to be substantial difference between the contracts that you sign at various companies in the US working as a developer or in the law that applies. All of them need to purchase your copyright and patents without having to prove that they were generated “on the clock,” so they will all try to do this, unless the company is being negligent and has not arranged for appropriate contracts to be in place, in which case, the company is probably being badly mismanaged and there’s another reason not to work there.</p>
+<p>The only difference is in the stance of management as to how hard they want to <em>enforce</em> their rights under these contracts. This can vary from:</p>
+<ul>
+<li>We love side projects. Have fun!</li>
+<li>We don’t really like side projects. You should be thinking about things for us.</li>
+<li>We love side projects. We love them so much we want to own them and sell them!</li>
+<li>We are kinda indifferent. If you piss us off, we will look for ways to make you miserable. If you leave and start a competitive company or even a half-competitive company, we will use this contract to bring you to tears. BUT, if you don’t piss us off, and serve us loyally, we’ll look the other way when your iPhone app starts making $40,000 a month.</li>
+</ul>
+<p>It may vary depending on whom you talk to, who is in power at any particular time, and whether or not you’re sleeping with the boss. You’re on your own, basically—the only way to gain independence is to be independent. Being an employee of a high tech company whose <em>product</em> is intellectual means that you have decided that you want to sell your intellectual output, and maybe that’s OK, and maybe it’s not, but it’s a free choice.</p>
+			 ]]></content>
+<pubDate>2016-12-09T22:00:27+00:00</pubDate>
+<guid></guid>
+<author><![CDATA[ Joel Spolsky ]]></author>
+</item>
+<item>
+<title><![CDATA[ Birdcage liners ]]></title>
+<link></link>
+<content><![CDATA[ 
+		<p>My new year’s resolution was to give up on reading Twitter and Facebook.</p>
+<p>I gave up on the feeds because they were making me angry. A lot of times I was angry because of politics, but even on non-political things, the feeds seemed like they were full of conflict and stress.</p>
+<p>I can’t tell you how much happier I am without them. Am I the only one that hated reading feeds? Do they make everybody unhappy? And if they make people unhappy why are they so popular?</p>
+<p>Since I design social software for a living I feel like I should have a professional opinion on why Twitter and Facebook made me unhappy.</p>
+<p>Let’s start with Twitter. I used Twitter to keep in touch with friends and colleagues because I cared about them. Unfortunately, those friends mostly didn’t use Twitter to share happy news and tell me how things were going. They used Twitter for bumper sticker flame wars. These were not the thoughtful long essays on blogs of yesteryear. 140 characters is too short for that.</p>
+<p><a href="https://i0.wp.com/www.joelonsoftware.com/wp-content/uploads/2018/01/2018-01-09-12.54.00.jpg?ssl=1"><img alt="image placeholder" ></a>Here’s what happened with the 140 characters. You would start out having some kind of complicated thought. “Ya know, dogs are great and all? I love dogs! But sometimes they can be a little bit too friendly. They can get excited and jump on little kids and scare the bejesus out of them. They wag their tails so hard they knock things over. (PS not Huskies! Huskies are the cats of the dog world!)”</p>
+<p>Ok, so now you try to post that on Twitter. And you edit and edit and you finally get it down to something that fits: “Dogs can be too friendly!”</p>
+<p>All the nuance is lost. And this is where things go wrong. “@spolsky what about huskies? #dontforgethuskies”</p>
+<p>Ten minutes later, “Boycott @stackoverflow. @spolsky proves again that tech bros hate huskies. #shame”</p>
+<p>By the time you get off the plane in Africa you’re on the international pariah list and your @replies are full of people accusing you of throwing puppies out of moving cars for profit.</p>
+<p>Yeah, I get it, this 140 character limitation was just a historical accident, and now it’s 280 characters anyway, and you can always make a Twitter Story, but the flame wars on Twitter emerged from the fact that we’ve taken a medium, text, which is already bad at conveying emotion and sentiment and high-bandwidth nuance, and made it even worse, and the net result is a lot of outrage and indignation.</p>
+<p>The outrage and indignation, of course, are what makes it work. That’s what keeps you coming back. Oooh shade. Oooh flamewar. We rubberneckers can’t keep our eyes off of it. I don’t know what the original idea of Twitter was, but it succeeded because of natural selection. In a world where the tech industry was cranking out millions of dumb little social applications, this one happens to limit messages to 140 characters and that happens to create, unintentionally, a subtlety-free indignation machine, which is addictive as heck, so this is the one that survives and thrives and becomes a huge new engine of polarization and anger. It’s not a coincidence that we got a president who came to power through bumper-sticker slogans, outrageous false statements chosen to make people’s blood boil, and of course Twitter. This is all a part of a contagious disease that is spreading like crazy because we as a society have not figured out how to fight back yet.</p>
+<p>But Twitter is small potatoes. Facebook is where the action is. Facebook quickly copied Twitter’s idea of the “feed” as a mechanism to keep you coming back compulsively. But whereas Twitter sort of stumbled upon addictiveness through the weird 140-character limit, Facebook mixed a new, super-potent active ingredient into their feed called Machine Learning. They basically said, “look, we are not going to show everybody every post,” and they used the new Midas-style power of machine learning and set it in the direction of getting people even more hyper-addicted to the feed. The only thing the ML algorithm was told to care about was addiction, or, as they called it, engagement. They had a big ol’ growth team that was trying different experiments and a raw algorithm that was deciding what to show everybody and the only thing it cared about was getting you to come back constantly.</p>
+<p>Now, this algorithm, accidentally, learned something interesting—something that dog trainers have always known.</p>
+<p><a href="https://i0.wp.com/www.joelonsoftware.com/wp-content/uploads/2018/01/2017-06-30-20.39.17.jpg?ssl=1"><img alt="image placeholder" ></a>Dog trainers give dogs a treat when they get something right. When they say “come,” and the dog comes, he gets a treat. Woof. I can train any arbitrary dog to do that with some reliability. But here’s what happens. Once, just once, I forget to give the dog a treat. And then the dog thinks, well, heck this, I guess “come” doesn’t always mean “treat.” So the trained behavior goes away. It’s technically called extinction: the trained behavior goes extinct.</p>
+<p>How do we prevent extinction? By only giving treats some of the time. So the dog learns something more subtle. When my master says come and I obey, I might get a treat. Sometimes I do, sometimes I don’t. That way, if I obey and don’t get the treat, I shouldn’t panic. I should still always come when he says come because that’s still the best way to get the most treats. Intermittent reinforcement works better.</p>
+<p>This sounds like what Facebook was doing to me.</p>
+<p>Rather than providing a constant stream of satisfying news and engagement with friends, Facebook’s algorithm had learned to give me a bunch of junk I didn’t need to hear, and only gave me intermittent rewards through the occasional useful nugget of information about friends. Once in a blue moon I would hear about a friend’s accomplishment or I would find out that someone I like is going to be in town. The rest of the time I would just get the kind of garbage newspaper clippings circulated by someone who had too much coffee and is misattributing the kick from the caffeine to something they just read online and now MUST share IMMEDIATELY with EVERYONE because this news story about something that happened to a baby bear is SOOOOO important to THE ENTIRE WORLD. And so 9 of out 10 things in my feed are complete garbage—last week’s newspaper lining the birdcage with the droppings already on it—but then once every two weeks I find out my niece is engaged or my best friend got a great new job or my oldest friend is in town and I should make plans to hang out. And now no matter how full the Facebook feed is of bird droppings I still have to keep going back.</p>
+<p>Both Twitter and Facebook’s selfish algorithms, optimized solely for increasing the number of hours I spend on their services, are kind of destroying civil society at the same time. Researchers also discovered that the algorithms served to divide up the world into partisan groups. So even though I was following hundreds of people on social networks, I noticed that the political pieces which I saw were nevertheless directionally aligned with my own political beliefs. But to be honest they were much… shriller. Every day the Twitter told me about something that The Other Side did that was Outrageous and Awful (or, at least, this was reported), and everyone was screeching in sync and self-organizing in a lynch mob, and I would have to click LIKE or RETWEET just to feel like I had done something about it, but I hadn’t actually done anything about it. I had just slacktivated.</p>
+<p>What is the lesson? The lesson here is that when you design software, you create the future.</p>
+<p>If you’re designing software for a social network, the decision to limit message lengths, or the decision to use ML to maximize engagement, will have vast social impact which is often very hard to predict.</p>
+<p>As software developers and designers, we have a responsibility to the world to think these things through carefully and design software that makes the world better, or, at least, no worse than it started out. And when our inventions spin out of control, we have a responsibility to understand why and to try to fix them.</p>
+<p>This blog post has a surprise piece of good news. The good news is that Facebook suddenly realized what they had done, and today they <a href="https://www.facebook.com/zuck/posts/10104413015393571">announced</a> a pretty major change of direction. They want the feed to leave people feeling “more connected and less lonely,” so they have actually decided to sacrifice “engagement.” Mark Zuckerberg posted, “By making these changes, I expect the time people spend on Facebook and some measures of engagement will go down. But I also expect the time you do spend on Facebook will be more valuable.” That’s amazing, but it’s amazing because it demonstrates that Facebook has finally grown up and joined the rest of us in understanding that software developers are designing the future.</p>
+			 ]]></content>
+<pubDate>2018-01-12T06:11:34+00:00</pubDate>
+<guid></guid>
+<author><![CDATA[ Joel Spolsky ]]></author>
+</item>
+<item>
+<title><![CDATA[ The Stack Overflow Age ]]></title>
+<link></link>
+<content><![CDATA[ 
+		<p>Hi, everyone! A lot of stuff has happened since I was writing all those blog posts about Aeron chairs 18 years ago. Some of those blog posts are old enough to go to college.</p>
+<p>And, also: <a href="https://stackoverflow.com/">Stack Overflow</a> will be ten years old soon! Wow! So I thought it would be cool to get the old band back together for a little reunion tour over the next few weeks. I want to catch you all up on some stuff but mostly I want to tell the story of Stack Overflow in a not-completely-disorganized way. With some perspective, it’s clearer now what we did right and what we messed up, so I’ll try to cover the good and the bad over a series of blog posts.</p>
+<p>And, also: we’re just a few weeks away from launching Stack Overflow Teams, the biggest upgrade to Stack Overflow ever, so that’s going to be really cool. I’ll get to that in a future blog post!</p>
+<p>Today is chapter one. I want to talk a little bit about what it was like for developers before Stack Overflow, the problem that Stack Overflow tried to solve, and early origins.</p>
+<p><a href="https://i0.wp.com/www.joelonsoftware.com/wp-content/uploads/2018/04/IMG_5567.jpg?ssl=1"><img alt="image placeholder" ></a>In the early days of the Internet, before the Web, there was a system called <a href="https://today.duke.edu/2010/05/usenet.html">Usenet</a> which created primitive online discussion forums. When programmers had problems with their code, they could ask a question on a Usenet forum. (They were technically called newsgroups, not forums (even though they had nothing to do with news. (You couldn’t even get news on Usenet.)))</p>
+<p>As soon as the world wide web became a thing, Usenet was immediately technically obsolete. We programmers started asking about our problems on various web-based forums, of which there were thousands.</p>
+<p>One of the biggest such forums was called Experts Exchange. The first version of Experts Exchange was not successful financially. Apparently they went bankrupt in 2001. Eventually new owners bought the assets and resurrected the site with a clever business model: charging money to read answers.</p>
+<p>This actually fixed the business, which started making money, but it caused some problems.</p>
+<p>The first problem was that programmers with problems would search on Google, not on Experts Exchange. And Google only knows about free, open websites, not websites that you have to pay to access. So EE did a bamboozle: when the Google Robot came by, they showed it the full question and its answers. But when regular people went to the same page, they saw the answers were scrambled, with instructions to pay (I think it was about $250 a year) to see the results. Most programmers couldn’t be bothered.</p>
+<p>The second problem was that EE let you get a free membership if you answered a certain number of questions. As it turned out, the people who were most desperate for free memberships were not exactly the best programmers in the world, and they wrote low quality answers to questions just to get those free memberships. And the quality of answers on the site went down.</p>
+<p>For a long time (at least five years, I think) programmers would constantly come across EE in the Google search results, try to click on them, discover that it was a pay site, grumble, and just go back to Google and try to find an answer for free.</p>
+<p>And I kept thinking, how hard is it to run a discussion forum on the Internet? For fudge sake, I had written one in Visual Basic in a weekend. (Not kidding, actually. Yeah I know that I am always saying “I could do that in a weekend in Visual Basic” when developers tell me some feature is going to take a year. This is why). So I was confident that it was only a matter of time before one of the 9,000,000 smart programmers in the world decided to route around this EE damage and make a free forum.</p>
+<p>You know what? Nobody ever did. I kept waiting.</p>
+<p>Another thing I wrote in a weekend (well, to be precise: a fortnight (shut up, I’m telling this lie)) was a <a href="https://www.joelonsoftware.com/2006/09/05/introducing-jobsjoelonsoftwarecom/">job listing board for this blog</a>. And in the first month of running that job board I think we sold about $90,000 of job listings. Huzzah! And then I thought, wow, if we smashed these ideas together—replace Experts Exchange with a free site, and pay for it with job listings—we could undo the damage to the internet and let developers get work done again.</p>
+<p>I kept thinking “Man, this is so obvious, somebody is going to do it.”</p>
+<p>And they never did.</p>
+<p>And I went to one of the programmers at Fog Creek, and explained my idea, and he was like “yeah yeah sounds like a great idea, but I really like working on FogBugz.”</p>
+<p>And more time went by.</p>
+<p>And eventually, early in 2008, a developer/blogger named <a href="https://blog.codinghorror.com/">Jeff Atwood</a> called me up, and said, “Hey Joel, I’m thinking of quitting my day job to be a Pro Blogger; you’re a blogger: what do you think?”</p>
+<p>And I said, “Jeff, I’ve got a better idea” and I told him about the idea to combine the job listings with the Q&amp;A site for developers, and, it took more than a weekend, but eventually I convinced him. We started talking about all the ways our Q&amp;A site would be amazing. Jeff started working on the code in April 2008, recruited two other programmers to join him (Geoff and Jarrod, who are still here), and the three of them heroically launched what became Stack Overflow in September 2008.</p>
+<p> </p>
+<p><img alt="image placeholder" ></p>
+<p> </p>
+<p>And thus began the Stack Overflow Age.</p>
+<p>Stack Overflow was better because it was free, but it had a ton of other “innovations” (which I put in quotes because we stole them from other Internet pioneers) which made it a much, much better site for getting answers to programming questions.</p>
+<p>We wanted the whole thing to be a fun game, with incentives to answer questions, so we had a reputation system. The more you answer, the more reputation you earn. The reputation idea had been seen before on sites like Slashdot and Reddit.</p>
+<p>As you earn reputation, you also earn moderation privileges on the site. So the site actually moderates itself, which is pretty cool.</p>
+<p>Instead of putting all the Java programmers in one little forum and all the C++ programmers in another, we dumped everyone together and just let them tag their questions. This idea was stolen from <a href="https://www.flickr.com/">flickr</a> (remember flickr?) who, I think, stole it from del.icio.us (now gone)—who knows, anyway, the point is, tags were the new hotness and made Stack Overflow work great.</p>
+<p>Most importantly, we realized that each question is asked by one person but the answers are seen by thousands of people who found it through a search. So we decided to optimize everything to be useful for the thousands, not the individual. We literally have 1000 visitors for every person who asks a question. That’s why we sort the answers by votes. It’s also why we optimize for questions and answers that will be helpful to other people, later.</p>
+<p>Interestingly, when Jeff and I started Stack Overflow, we didn’t really care if it was a business and we didn’t need it to be a big profitable success. We created it because the internet sucked for programmers and we needed to make it better. We thought the job listings would pay the bills, and we’d fix the internet, and that was all we cared about and it’s what motivated us to work so hard.</p>
+<p>Of course, it turned out a lot bigger than we thought it would. The company today has 250 employees, is profitable, and has made it possible for millions of people to learn how to code and to deal with the new, super-complicated world of APIs and frameworks that we live in. But we just wanted to fix the internet.</p>
+<p>I have met a lot of people who started businesses because they wanted to start a business. <a href="http://startupclass.samaltman.com/courses/lec03/">Paul Graham calls this “Playing House.”</a> And they didn’t really care what the business did; they just wanted to “be entrepreneurs.” Which is weird, because being an entrepreneur really sucks. It’s really hard to get through all the extraordinary difficulty, pain, and stress of starting a company if you’re not super, super motivated to solve a problem for the world.</p>
+<p>The entrepreneurs who succeed do so because it is incredibly important to them a thing exist in the world, and it does not exist, so they work like crazy until it does. When we started Stack Overflow we didn’t expect it to be a big business; we just wanted there to be someplace where developers could get help to daily problems, while showing off how smart they were helping other developers.</p>
+<p>Ok, that’s chapter one. I’ve got a lot more to talk about. In the next installment, I’ll talk more about <a href="https://www.joelonsoftware.com/2018/04/13/gamification/">how Stack Overflow’s light dusting of gamification made it really take off.</a></p>
+			 ]]></content>
+<pubDate>2018-04-06T13:32:10+00:00</pubDate>
+<guid></guid>
+<author><![CDATA[ Joel Spolsky ]]></author>
+</item>
+<item>
+<title><![CDATA[ A Dusting of Gamification ]]></title>
+<link></link>
+<content><![CDATA[ 
+		<p><em>[This is the second in a series of posts about Stack Overflow. The first one is <a href="https://www.joelonsoftware.com/2018/04/06/the-stack-overflow-age/">The Stack Overflow Age</a>.]</em></p>
+<p>Around 2010 the success of Stack Overflow had led us into some conversations with VCs, who wanted to invest.</p>
+<p><img alt="image placeholder" ></p>
+<p>The firm that eventually invested in us, <a href="https://www.usv.com/">Union Square Ventures</a>, told us that they were so excited by the power of gamification that they were only investing in companies that incorporated some kind of game play.</p>
+<p>For example, Foursquare. Remember Foursquare? It was all about making your normal post-NYU life of going to ramen noodle places and dive bars into a fun game that incidentally generated wads of data for marketers. Or Duolingo, which is a fun app with flash cards that teaches you foreign languages. Those were other USV investments from that time period.</p>
+<p>At the time, I had to think for a minute to realize that Stack Overflow has “gamification” too. Not a ton. Maybe a <em>dusting</em> of gamification, most of it around reputation.</p>
+<p>Stack Overflow reputation started as a very simple score. The original idea was just that you would get 10 points when your answers were upvoted. Upvotes do two things. They get the most useful answers to the top, signaling that other developers who saw this answer thought it was good. They also send the person who wrote the answer a real signal that their efforts helped someone. This can be incredibly motivating.</p>
+<p>You would lose points if your questions were downvoted, but you actually only lose 2 points. We didn’t want to punish you so much as we wanted to show other people that your answer was wrong. And to avoid abuse, we actually make you <em>pay</em> one reputation point to downvote somebody, so you better really mean it. That was pretty much the whole system.</p>
+<p>Now, this wasn’t an original idea. It was originally inspired by Reddit Karma, which started out as an integer that appeared in parentheses after your handle. If you posted something that got upvoted, your karma went up as a “reward.” That was it. Karma <a href="https://www.zdnet.com/article/collaborative-filtering-comparing-reddits-karma-system-to-digg/">didn’t do a single thing</a> but still served as a system for reward and punishment.</p>
+<p>What reputation and karma do is send a message that this is a community with norms, it’s not just a place to type words onto the internet. (That would be 4chan.) We don’t really exist for the purpose of letting you exercise your freedom of speech. You can get your freedom of speech somewhere else. Our goal is to get the best answers to questions. All the voting makes it clear that we have standards, that some posts are better than others, and that the community itself has some norms about what’s good and bad that they express through the vote.</p>
+<p>It’s not a perfect system (more on the problems in a minute), but it’s a reasonable first approximation.</p>
+<p>By the way, Alexis Ohanian and Steve Huffman, the creators of Reddit, were themselves inspired by a more primitive karma system, on Slashdot. This system had real-world implications. You didn’t get karma so that other people could see your karma; you got karma so that the system knew you weren’t a spammer. If a lot of your posts had been flagged for abuse, your karma would go down and you might lose posting or moderation privileges. But you weren’t really supposed to show off your high karma. “Don’t worry too much about it; it’s just an integer in a database,” Slashdot told us.</p>
+<p>To be honest, it was initially surprising to me that you could just print a number after people’s handles and they would feel rewarded. Look at me! Look at my four digit number! But it does drive a tremendous amount of good behavior. Even people who aren’t participating in the system (by working to earn reputation) buy into it (e.g., by respecting high-reputation users for their demonstrated knowledge and helpfulness).</p>
+<p>But there’s still something of a mystery here, which is why earning “magic internet points” is appealing to anyone.</p>
+<p>I think the answer is that it’s nice to know that you’ve made a difference. You toil away in the hot kitchen all day and when you serve dinner it’s nice to hear a compliment or two. If somebody compliments you on the extra effort you put into making radish roses, you’re going to be very happy.</p>
+<p>This is a part of a greater human need: to make an impact on the world, and to know that you’re contributing and being appreciated for it. Stack Overflow’s reputation system serves to recognize that you’re a human being and we are super thankful for your contribution.</p>
+<p><img alt="image placeholder" ></p>
+<p>That said, there is a dark side to gamification. It’s not 100% awesome.</p>
+<p>The first problem we noticed is that it’s very nice to get an upvote, but getting a downvote feels like a slap in the face. Especially if you don’t understand why you got the downvote, or if you don’t agree. Stack Overflow’s voting has made many people unhappy over the years, and there are probably loads of people who felt unwelcome and who don’t participate in Stack Overflow as a result. (Here’s an old blog post explaining <a href="https://stackoverflow.blog/2009/03/09/the-value-of-downvoting-or-how-hacker-news-gets-it-wrong/">why we didn’t just eliminate downvotes</a>).</p>
+<p>There’s another problem, which is that, to the extent that the gamification in Stack Overflow makes the site feel less inclusive and welcoming to many people, it is disproportionately off-putting to programmers from underrepresented groups. While Stack Overflow does have many amazing, high reputation contributors who are women or minorities, we’ve also heard from too many who were apprehensive about participating.</p>
+<p>These are big problems. There’s a lot more we can and will say about that over the next few months, and we’ve got a lot of work ahead of us trying to make Stack Overflow a more inclusive and diverse place so we can improve the important service that it provides to developers everywhere.</p>
+<p>Gamification can shape behavior. It can guide you to do certain things in certain ways, and it can encourage certain behaviors. But it’s a very weak force. You can’t do that much with gamification. You certainly can’t get people to do something that they’re not interested in doing, anyway. I’ve heard a lot of crazy business plans that are pinning rather too high hopes on gamification as a way of getting people to go along with some crazy scheme that the people won’t want to go along with. Nobody’s going to learn French just to get the Duolingo points. But if you are learning French, and you are using Duolingo, you might make an effort to open the app every day just to keep your streak going.</p>
+<p>I’ve got more posts coming! The next one will be about the obsessive way Stack Overflow was designed for the artifact, in other words, we optimized everything to create amazing results for developers with problems arriving from Google, not just to answer questions that people typed into our site.</p>
+<p> </p>
+			 ]]></content>
+<pubDate>2018-04-13T13:40:21+00:00</pubDate>
+<guid></guid>
+<author><![CDATA[ Joel Spolsky ]]></author>
+</item>
+<item>
+<title><![CDATA[ Strange and maddening rules ]]></title>
+<link></link>
+<content><![CDATA[ 
+		<p>There’s this popular idea among developers that when you face a problem with code, you should get out a rubber duck and explain, to the duck, exactly how your code was supposed to work, line by line, what you expected to see, what you saw instead, etc. Developers who try this report that the very act of explaining the problem in detail to an inanimate object often helps them find the solution.</p>
+<p><a href="https://meta.stackexchange.com/questions/308564/stack-exchange-has-been-taken-over-by-a-rubber-duck"><img alt="image placeholder" ></a>This is one of many tricks to solving programming problems on your own. Another trick is <a href="http://markheath.net/post/effective-debugging-with-divide-and-conquer">divide and conquer debugging</a>. You can’t study a thousand lines of code to find the one bug. But you can divide them in half and quickly figure out if the problem happens in the first half or the second half. Keep doing this five or six times and you’ll pinpoint the single line of code with the problem.</p>
+<p>It’s interesting, with this in mind, to read <a href="https://stackoverflow.com/users/22656/jon-skeet?tab=profile">Jon Skeet’s</a> checklist for <a href="https://codeblog.jonskeet.uk/2012/11/24/stack-overflow-question-checklist/">writing the perfect question</a>. One of the questions Jon asks is “Have you read the whole question to yourself carefully, to make sure it makes sense and contains enough information for someone coming to it without any of the context that you already know?” That is essentially the Rubber Duck Test. Another question is “If your question includes code, have you written it as a short but complete program?” Emphasis on the <em>short</em>—that is essentially a test of whether or not you tried divide and conquer.</p>
+<p>What Jon’s checklist can do, in the best of worlds, is to help people try the things that experienced programmers may have already tried, before they ask for help.</p>
+<p>Sadly, not everybody finds his checklist. Maybe they found it and they don’t care. They’re having an urgent problem with code; they heard that Stack Overflow could help them; and they don’t have time to read some nerd’s complicated protocol for requesting help.</p>
+<p><a href="https://i0.wp.com/www.joelonsoftware.com/wp-content/uploads/2018/04/NYC.png?ssl=1"><img alt="image placeholder" ></a></p>
+<p>One of the frequent debates about Stack Overflow is whether the site needs to be open to questions from programming novices.</p>
+<p>When Jeff and I were talking about the initial design of Stack Overflow, I told him about this popular Usenet group for the C programming language in the 1980s. It was called <a href="https://groups.google.com/forum/#!forum/comp.lang.c">comp.lang.c.</a></p>
+<p>C is a simple and limited programming language. <a href="http://repo.or.cz/w/tinycc.git">You can get a C compiler that fits in 100K.</a> So, when you make a discussion group about C, you quickly run out of things to talk about.</p>
+<p>Also. In the 1990s, C was a common language for undergraduates who were learning programming. And, in fact, said undergraduates would have <a href="https://groups.google.com/forum/#!searchin/comp.lang.c/spolsky%7Csort:date/comp.lang.c/BKhAacGNtZI/GLSW-QG_O3MJ">very basic problems</a> in C. And they might show up on comp.lang.c asking their questions.</p>
+<p>And the old-timers on comp.lang.c were bored. <i>So</i> bored. Bored of the undergraduates showing up every September wondering why they can’t return a local char array from a function et cetera, et cetera, ad nauseum. Every damn September.</p>
+<p>The old timers invented the concept of FAQs. They used them to say “please don’t ask things that have been asked before, ever, in the history of Usenet” which honestly meant that the only questions they really wanted to see were so bizarre and so esoteric that they were really enormously boring to 99% of working C programmers. The newsgroup languished because it catered only to the few people that had been there for a decade.</p>
+<p>Jeff and I talked about this. What did we think of newbie questions?</p>
+<p>We decided that newbies had to be welcome. Nothing was too “beginner” to be a reasonable question on Stack Overflow… as long as you did some homework before asking the question.</p>
+<p>We understood that this might mean that some of the more advanced people might grow bored with duplicate, simple questions, and move on. We thought that was fine: Stack Overflow doesn’t have to be a lifetime commitment. You’re welcome to get bored and move on if you think that the newbies keep asking why they can’t return local char arrays (“but it works for me!”) and you would rather devote the remaining short years of your life to something more productive, like sorting your record albums.</p>
+<p>The mere fact that you are a newbie doesn’t mean that your question doesn’t belong on Stack Overflow. To prove the point, I asked “<a href="https://stackoverflow.com/questions/1003841/how-do-i-move-the-turtle-in-logo">How do you move the turtle in Logo</a>,” hoping to leave behind evidence that the site designers wanted to allow absolute beginners.</p>
+<p>Thanks to the law of unintended consequences, this caused a lot of brouhaha, but not because the question was too easy. The real problem there was that I was asking the question in bad faith. Jeff Atwood <a href="https://meta.stackexchange.com/questions/158289/why-is-the-how-to-move-the-turtle-in-logo-question-closed#comment457933_158334">explained</a> it: “Simple is fine. No effort and research is not.” (<a href="https://en.wikipedia.org/wiki/Wikipedia:Do_not_disrupt_Wikipedia_to_illustrate_a_point">Also this</a>.)</p>
+<p><a href="https://i0.wp.com/www.joelonsoftware.com/wp-content/uploads/2018/04/StBarts.png?ssl=1"><img alt="image placeholder" ></a></p>
+<p><span style="font-weight: 400;">To novices, the long bureaucratic rigmarole associated with asking your first question on Stack Overflow can feel either completely unnecessary, or just plain weird. It’s like Burning Man. You just want to go to a nice glittery dance party in the desert, but the Burning People are yammering on about their goddamn </span><a href="https://burningman.org/culture/philosophical-center/10-principles/"><span style="font-weight: 400;">10 principles</span></a><span style="font-weight: 400;">, and “radical self-expression” and so on and so forth, and </span><i><span style="font-weight: 400;">therefore</span></i><span style="font-weight: 400;"> after washing your dishes you must carefully save the dirty dishwater like a cherished relic and remove every drop of it from the Playa, bringing it home with you, in your check-in luggage if necessary. Every community has lots of rules and when you join the community they either seem strange and delightful or, if you’re just desperately trying to get some code to work, they are strange and maddening.</span></p>
+<p><span style="font-weight: 400;">A lot of the rules that are important to make Burning Man successful are seemingly arbitrary, but they’re still necessary. The US Bureau of Land Management which makes the desert available for Burning Man requires that no contaminated water be poured out on the ground because the clay dirt doesn’t really absorb it so well and it can introduce all kinds of disease and whatnot, but who cares because Burning Man simply will not be allowed to continue if the participants don’t pack out their used water.</span></p>
+<p><span style="font-weight: 400;">Similarly for Stack Overflow. We don’t allow, say, questions that are too broad (“How do I make a program?”). Our general rule is that if the correct length of an answer is </span><i><span style="font-weight: 400;">a whole book </span></i><span style="font-weight: 400;">you are asking too much. These questions feel like showing up on a medical website and saying something like “I think my kidney has been hurting. How can I remove it?” It’s crazy—and incidentally, insulting to the people who spent ten years in training learning to be surgeons.</span></p>
+<p><span style="font-weight: 400;">One thing I’m very concerned about, as we try to educate the next generation of developers, and, importantly, get more diversity and inclusiveness in that new generation, is what obstacles we’re putting up for people as they try to learn programming. In many ways Stack Overflow’s specific rules for what is permitted and what is not are obstacles, but an even bigger problem is rudeness, snark, or condescension that newcomers often see.</span></p>
+<p>I care a lot about this. Being a developer gives you an unparalleled opportunity to <a href="https://www.joelonsoftware.com/2016/12/09/developers-are-writing-the-script-for-the-future/">write the script for the future</a>. All the flak that Stack Overflow throws in the face of newbies trying to become developers is actively harmful to people, to society, and to Stack Overflow itself, by driving away potential future contributors. And programming is hard enough; we should see our mission as making it easier.</p>
+<p>We’re planning a lot of work in this area for the next year. We can’t change everybody and we can’t force people to be nice. But I think we can improve some aspects of the Stack Overflow user interface to encourage better behavior, for example, we could improve the prompts we provide on the “Ask Question” page, and we could provide more tools for community moderation of comments where the snark currently runs unchecked.</p>
+<p><a href="https://i0.wp.com/www.joelonsoftware.com/wp-content/uploads/2018/04/2016-09-10-21.38.14-1.jpg?ssl=1"><img alt="image placeholder" ></a></p>
+<p>We’re also working on new features that will let you direct your questions to a private, smaller group of people on your own team, which may bring some of the friendly neighborhood feel to the big city of Stack Overflow.</p>
+<p><span style="font-weight: 400;">Even as we try to make Stack Overflow more friendly, our primary consideration at Stack Overflow has been to build the world’s greatest resource for software developers. The average programmer, in the world, has been helped by Stack Overflow 340 times. That’s the real end-game here. There are other resources for learning to program and getting help, but there’s only one site in the world that developers trust this much, and that is worth preserving—the programming equivalent to the Library of Congress.</span></p>
+			 ]]></content>
+<pubDate>2018-04-23T14:42:45+00:00</pubDate>
+<guid></guid>
+<author><![CDATA[ Joel Spolsky ]]></author>
+</item>
+<item>
+<title><![CDATA[ Announcing Stack Overflow for Teams ]]></title>
+<link></link>
+<content><![CDATA[ 
+		<p>Hey, we have a new thing for you today!</p>
+<p>Today’s new thing is called <a href="https://stackoverflow.com/teams">Stack Overflow for Teams</a>. It lets you set up a private place on Stack Overflow where you can ask questions that will only be visible to members of your team, company, or organization. It is a paid service, but it’s not expensive.</p>
+<p>I meet people who use Stack Overflow every single day, but a lot of them tell me they have never needed to post their own question. “All the questions are already answered!” they say. Mission accomplished, I guess!</p>
+<p>Still, when I think about what questions developers have every day, only the ones that have to do with public stuff can be asked on Stack Overflow. Maybe you don’t have a question about Python or Android… maybe you want to ask something about your team’s own code base!</p>
+<p>That’s the idea behind Stack Overflow Teams.</p>
+<p><a href="https://i0.wp.com/www.joelonsoftware.com/wp-content/uploads/2018/05/Helicopters.png?ssl=1"><img alt="image placeholder" ></a></p>
+<p>Quick background: every development team since the beginning of time has been trying to figure out how to get institutional knowledge out of people’s heads and into written, searchable form where everyone can find it. Like new members of the team. And old members of the team working on new parts of the code. And people who forgot what they did three years ago and now have questions about <em>their own code</em>.</p>
+<p>For a while developers thought wikis might be the solution. Anyone who has used a wiki for this purpose has probably discovered that not very much knowledge actually makes it into the wiki, and what does is not particularly useful, doesn’t get updated, and honestly it just feels like a bunch of homework to write a bunch of wiki documentation about your code when you don’t know if it will ever help anyone.</p>
+<p>Another solution being sold today is the idea of having some kind of online IRC-style chat rooms, and hoping that by searching those chat archives, you can find “institutional knowledge.” Ha ha ha! Even if that works, all you really find is the history of some conversation people had. It might have clues but it’s not knowledge.</p>
+<p>But you know what does work? A Q&amp;A system. Like Stack Overflow.</p>
+<p>Why? Because unlike wikis, you don’t write documentation in the hopes that one day it might help someone. You answer questions that are going to help someone <em>immediately.</em> And you can stop answering the minute you get the green checkmark that shows that you solved their problem.</p>
+<p>And unlike chatrooms, searching actually works. It finds you a question and its answers, not a conversation-captured-in-amber.</p>
+<p>This is why Stack Overflow worked so much better on the public internet than the previous generation of discussion forums, and we think that it will work for all the same reasons with teams’ <em>proprietary</em> questions and answers.</p>
+<p>When you join a team, you’ll see your team’s private questions right on <a href="https://stackoverflow.com/">stackoverflow.com</a> (although they actually live in a separate database for security). Your teams are listed in the left hand navbar.</p>
+<p><a href="https://i0.wp.com/www.joelonsoftware.com/wp-content/uploads/2018/04/Teams1.png?ssl=1"><img alt="image placeholder" ></a></p>
+<p>Everything else works pretty much … like you would expect. When you ask a question, you can direct it to your team or to the whole world. The UI makes it very clear whether you are posting publicly or privately. If you are asking a question of your team, there’s a <em>Notify</em> field so you can type the names of some people who might be able to answer the question, and they’ll hear about it right away.</p>
+<p><a href="https://i0.wp.com/www.joelonsoftware.com/wp-content/uploads/2018/04/Teams2.png?ssl=1"><img alt="image placeholder" ></a></p>
+<p>When you search, you can search everywhere, or just within your team. You can set up tags that are specific to your team, too.</p>
+<p>The pricing is designed to be “no-brainer” pricing, starting at just $10 per month for the first ten users.</p>
+<p>I think <a href="https://stackoverflow.com/teams">Stack Overflow for Teams</a> is going to be almost as important to developers’ daily work as public Stack Overflow. It brings Stack Overflow’s uniquely powerful system to every developer question, not just the things that can be discussed in public. You can stop asking your teammates questions in email (where they help nobody else) or in chatrooms (where they are impossible to find) and start building your own private knowledge base to document your code and answer future teammates’ questions before they have them.</p>
+			 ]]></content>
+<pubDate>2018-05-03T12:58:25+00:00</pubDate>
+<guid></guid>
+<author><![CDATA[ Joel Spolsky ]]></author>
+</item>
+<item>
+<title><![CDATA[ The next CEO of Stack Overflow ]]></title>
+<link></link>
+<content><![CDATA[ 
+		
+<p>Big news! We’re looking for a new CEO for Stack Overflow. I’m stepping out of the day-to-day and up to the role of Chairman of the Board.</p>
+
+
+
+<p>Stack Overflow has been around for more than a decade. As I look back, it’s really amazing how far it has come.  </p>
+
+
+
+<p>Only six months after we had launched Stack Overflow, my co-founder Jeff Atwood and I were invited to speak at a Microsoft conference for developers in Las Vegas. We were there, I think, to demonstrate that you could use their latest ASP.NET MVC technology on a real website without too much of a disaster. (In fact .NET has been a huge, unmitigated success for us, but you kids go ahead and have fun with whatever platform you want mkay? They’re all great, or, at least, above-average).</p>
+
+
+
+<p>It was a giant conference, held at the Venetian Hotel. This hotel was so big that other <em>hotels</em> stay there when they go on vacation. The main ballroom was the size of, approximately, Ireland. I later learned there were 5,000 developers in that room.</p>
+
+
+
+<p>I thought it would be a fun thing to ask the developers in the room how many of them had visited Stack Overflow. As I remember, Jeff was very much against this idea. “Joel,” he said, “That is going to be embarrassing and humiliating. Nobody is going to raise their hand.”</p>
+
+
+
+<p>Well, I asked it anyway. And we were both surprised to see about one-third of the hands go up. We were really making an impact! That felt really good.</p>
+
+
+
+<p>Anyway, I tried that trick again whenever I spoke to a large audience. It doesn’t work anymore. Today, audiences just laugh. It’s like asking, “Does anyone use gravity? Raise your hand if you use gravity.”</p>
+
+
+
+<figure class="wp-block-image"><img alt="image placeholder" ></figure>
+
+
+
+<p>Where are we at after 11 years? Practically every developer in the world uses Stack Overflow. Including the Stack Exchange network of 174 sites, we have over 100 million monthly visitors. Every month, over 125,000 wonderful people write answers. According to Alexa, <a href="https://www.alexa.com/siteinfo/stackoverflow.com">stackoverflow.com is one of the top 50 websites in the world</a>. (That’s without even counting the Stack Exchange network, which is almost as big.) And every time I see a developer write code, they’ve got Stack Overflow open in one of their browser windows. Oh and—hey!—we do not make you sign up or pay to see the answers.</p>
+
+
+
+<p>The company has been growing, too. Today we are profitable. We have almost 300 amazing employees worldwide and booked $70m in revenue last year. We have talent, advertising, and software products. The SaaS products (Stack Overflow for <a href="https://stackoverflow.com/teams">Teams</a> and <a href="https://stackoverflow.com/enterprise">Enterprise</a>) are growing at <em>200% a year</em>. That speaks to the fact that we’ve recruited an incredibly talented team that has produced such fantastic results. </p>
+
+
+
+<p>But, we have a lot of work ahead of us, and it’s going to take a different type of leader to get us through that work. </p>
+
+
+
+<p>The type of people Stack Overflow serves has changed, and now, as a part of the developer ecosystem, we have a responsibility to create an online community that is far more diverse, inclusive, and welcoming of newcomers.</p>
+
+
+
+<p>In the decade or so since Stack Overflow started, the number of people employed as software developers <a href="https://www.bls.gov/careeroutlook/2019/data-on-display/projections-evaluation.htm?view_full">grew by 64%</a> in the US alone. The field is going to keep growing everywhere in the world, and the demand for great software developers far outstrips supply. So a big challenge for Stack Overflow is welcoming those new developers into the fold. As I’ve <a href="https://www.joelonsoftware.com/2018/04/23/strange-and-maddening-rules/">written</a>:</p>
+
+
+
+<blockquote class="wp-block-quote is-layout-flow wp-block-quote-is-layout-flow">
+<p>One thing I’m very concerned about, as we try to educate the next generation of developers, and, importantly, get more diversity and inclusiveness in that new generation, is what obstacles we’re putting up for people as they try to learn programming. In many ways Stack Overflow’s specific rules for what is permitted and what is not are obstacles, but an even bigger problem is rudeness, snark, or condescension that newcomers often see.</p>
+<p>I care a lot about this. Being a developer gives you an unparalleled opportunity to <a href="https://www.joelonsoftware.com/2016/12/09/developers-are-writing-the-script-for-the-future/">write the script for the future</a>. All the flak that Stack Overflow throws in the face of newbies trying to become developers is actively harmful to people, to society, and to Stack Overflow itself, by driving away potential future contributors. And programming is hard enough; we should see our mission as making it easier.</p>
+</blockquote>
+
+
+
+<p>The world has started taking a closer look at tech, and understanding that software and the internet are not just tools; they are shaping the future of society. Big tech companies are struggling with their place in the world. Stack Overflow is situated at the right place to be influential in how that future develops, and that is going to take a new type of leader.</p>
+
+
+
+<div class="wp-block-image"><figure class="alignright is-resized"><img alt="image placeholder" ><figcaption>new dog, too</figcaption></figure></div>
+
+
+
+<p>It will not be easy to find a CEO who is the right person to lead that mission. We will, no doubt, hire one of those fancy executive headhunters to help us in the search. But, hey, this is Stack Overflow. If there’s one thing I have learned by now, it’s that there’s always someone in the community who can answer the questions I can’t. </p>
+
+
+
+<p>So we decided to put this announcement out there in hopes of finding great candidates that might have been under the radar. We’re especially focused on identifying candidates from under-represented groups, and making sure that every candidate we consider is deeply committed to making our company and community more welcoming, diverse, and inclusive.</p>
+
+
+
+<p>Over the years, Fog Creek Software created several incredible hits and many wonderful memories along the way. It is great to watch Trello (under Michael Pryor) and Glitch (under Anil Dash) growing into enormously valuable, successful, and influential products with dedicated leaders who took these products much further than I ever could have, and personally I’m excited to see where Stack Overflow can go and turn my attention to the next thing.<br></p>
+			 ]]></content>
+<pubDate>2019-03-28T14:00:53+00:00</pubDate>
+<guid></guid>
+<author><![CDATA[ Joel Spolsky ]]></author>
+</item>
+<item>
+<title><![CDATA[ Welcome, Prashanth! ]]></title>
+<link></link>
+<content><![CDATA[ 
+		
+<p>Last March, I <a href="https://www.joelonsoftware.com/2019/03/28/the-next-ceo-of-stack-overflow/">shared</a> that we were starting to look for a new CEO for Stack Overflow. We were looking for that rare combination of someone who could foster the community while accelerating the growth of our businesses, especially Teams, where we are starting to close many huge deals and becoming a hyper-growth enterprise software company very quickly. This is not something I’m particularly good at, and I thought it was time to bring on more experienced leadership.</p>
+
+
+
+<p>The Board of Directors nominated a search committee and we went through almost 200 candidates. It speaks to how well respected  a company Stack Overflow is that we found ourselves in the rare position of having plenty of highly qualified executives who were excited about the opportunity. Nevertheless, one of them really stood out, and we are pleased to let you know that we have selected Prashanth Chandrasekar as our next CEO. His first day will be October 1st.</p>
+
+
+
+<p>Prashanth was born in Bangalore, India, the city with the highest number of Stack Overflow users in the world, one of the global capitals for software developers writing the script for the future. He started out as a software engineer before moving over to management. He has a BS in Computer Engineering from the University of Maine, a Masters in Engineering Management from Cornell, and an MBA from Harvard. He worked at Capgemini as a management consultant and Barclays as an investment banker in their technology group before joining Rackspace in San Antonio, Texas.</p>
+
+
+
+<p>At Rackspace, Prashanth really proved his mettle, creating from scratch a completely new business unit inside the company, the <a href="https://www.rackspace.com/cloud/public">Global Managed Public Clouds Business</a>. This group serves companies around the world who need help running on AWS, Azure, Google, and so on. Under his leadership, Rackspace successfully pivoted from a leading managed hosting company to a cloud services company. And he did this while working with developers both inside Rackspace and outside, so he understands our vision of “writing the script for the future” better than anyone I’ve met.</p>
+
+
+
+<p>This is an exciting time for Stack Overflow, and we have some big goals for the year ahead. We want to make Stack Overflow more diverse, inclusive, and welcoming. And we want to make it possible for knowledge workers everywhere to use Stack Overflow to get answers to the proprietary questions that are specific to their organizations and teams. We’re doing great work and making great progress in these areas, and I’m confident that Prashanth has some great ideas about how to move forward faster on all our goals.</p>
+
+
+
+<p>As you know, I’m keeping my job as Chairman of the Board, so I’ll continue to be closely involved. Being Stack Overflow’s CEO has been an honor, and I can’t wait to see the things the team accomplishes in the year ahead. This will be a great new chapter for Stack Overflow.<br></p>
+			 ]]></content>
+<pubDate>2019-09-24T14:00:17+00:00</pubDate>
+<guid></guid>
+<author><![CDATA[ Joel Spolsky ]]></author>
+</item>
+<item>
+<title><![CDATA[ So, how’s that retirement thing going, anyway? ]]></title>
+<link></link>
+<content><![CDATA[ 
+		
+<p>For the last couple of months, Prashanth Chandrasekar has been getting settled in as the <a href="https://www.joelonsoftware.com/2019/09/24/announcing-stack-overflows-new-ceo/">new CEO of Stack Overflow</a>. I’m still going on some customer calls and have a weekly meeting with him, but I have freed up a lot of time. I’m also really enjoying discovering just how little I knew about running medium-sized companies, as I watch Prashanth rearrange everything—for the better. It’s really satisfying to realize that the best possible outcome for me is if he proves what a bad CEO I was by doing a much better job running the company.</p>
+
+
+
+<p>Even though I live in Manhattan’s premier NORC (“Naturally Occurring Retirement Community,”) I’m thinking of this time as a <a href="https://www.joelonsoftware.com/2000/03/18/more-on-sabbaticals/">sabbatical</a>, not retirement. And in fact I’m really, really busy, and, in the interest of deflecting a million questions about what I’m doing nowadays, thought I’d update my long-suffering readers here.</p>
+
+
+
+<figure class="wp-block-image size-large"><img alt="image placeholder" ><figcaption>This adorable little fella, Cooper, is two. If your web app needs a mascot, apply within. </figcaption></figure>
+
+
+
+<p>I’m chairman of three companies. You probably know all about Stack Overflow so I’ll skip ahead. </p>
+
+
+
+<p>Fog Creek Software has been renamed <a href="https://glitch.com/">Glitch</a>, “the friendly community for building the web.” Under CEO <a href="http://anildash.com/">Anil Dash</a>, they have grown to <a href="https://www.theverge.com/2019/7/9/20683018/glitch-2-5-million-apps-code-remix-anil-dash">millions of apps</a> and raised a decent <a href="https://glitch.com/culture/glitch-raises-30m-series-a-round-from-tiger-global/">round of money</a> to accelerate that growth. I think that in every era there has to be some kind of simplified programming environment for the quiet majority of developers who don’t need fancy administration features for their code, like git branches or multistep deployment processes; they just want to write code and have it run. Glitch is aimed at those developers.</p>
+
+
+
+<p>The third company, <a href="https://hash.ai/">HASH</a>, is still kind of under the radar right now, although today they put a whole bunch of words up on their website so I guess I can give you a preview. HASH is building an open source platform for doing simulations. It’s a great way to model problems where you have some idea of how every agent is supposed to behave, but you don’t really know what all that is going to add up to.</p>
+
+
+
+<p>For example, suppose you’re a city planner and you want to model traffic so that you can make a case for a new bus line. You can, sort of, pretend that every bus takes 50 cars off the road, but that’s not going to work unless you can find 50 commuters who will all decide to take your new bus line… and the way they decide is that they check if the bus is actually going to save them time and money over just driving. This is a case where you can actually simulate the behavior of every “agent” in your model, like <a href="https://en.wikipedia.org/wiki/City-building_game">Cities: Skylines</a> does, and figure out the results. Then you can try thousands or millions of different potential bus routes and see which ones actually reduce traffic. </p>
+
+
+
+<p>This kind of modeling is incredibly computationally intensive, but it works even when you don’t have a closed-form formula for how bus lines impact traffic, or, in general, how individual agents’ behavior affects overall outcomes. This kind of tool will be incredibly useful in far-ranging problems, like epidemiology, econometrics, urban planning, finance, political science, and a lot of other areas which are not really amenable to closed-form modeling or common “AI” techniques. (I love putting AI in “scare” “quotes”. There are a lot of startups out there trying to train machine learning models with way too little data. Sometimes the models they create just reproduce the bad decision making of the humans they are trained on. In many cases a model with simulated agents running a white box algorithm is going to be superior). </p>
+
+
+
+<p>Ok, so those are the three companies I’m still working on in some way or another. That still leaves me with a couple of free days every week which I’m actually using to work on some electronics projects. </p>
+
+
+
+<figure class="wp-block-image size-large"><img alt="image placeholder" ></figure>
+
+
+
+<p>In particular, I’m really into pixel-addressable RGB LEDs, like those WS2812b and APA102-type things. Right now I’m <a href="https://blinkylights.blog/">working</a> on designing a circuit board that connects a Teensy 3.2 controller, which can drive up to 4416 LEDs at a high frame rate, to a WizNET Ethernet adapter, and then creating some software which can be used to distribute 4416 pixels worth of data to each Teensy over a TCP-IP network in hopes of creating huge installations with hundreds of thousands of pixels. If that made any sense at all, you’re probably already a member of the <a href="https://www.facebook.com/groups/LEDSAREAWESOME/">LEDs ARE AWESOME</a> Facebook group and you probably think I’m dumb. If that doesn’t make any sense, rest assured that I am probably not going to burn down the apartment because I am very careful with the soldering iron almost every time. </p>
+
+
+
+<figure class="wp-block-image"><img alt="image placeholder" ></figure>
+
+
+
+<p></p>
+			 ]]></content>
+<pubDate>2019-12-05T22:51:39+00:00</pubDate>
+<guid></guid>
+<author><![CDATA[ Joel Spolsky ]]></author>
+</item>
+<item>
+<title><![CDATA[ HASH: a free, online platform for modeling the world ]]></title>
+<link></link>
+<content><![CDATA[ 
+		
+<p>Sometimes when you’re trying to figure out the way the world works, basic math is enough to get you going. If we increase the hot water flow by <em>x</em>, the temperature of the mixture goes up by <em>y</em>. </p>
+
+
+
+<p>Sometimes you’re working on something that’s just too complicated for that, and you can’t even begin to guess how the inputs affect the outputs. At the warehouse, everything seems to go fine when you have less than four employees, but when you hit five employees, they get in each others’ way so much that the fifth employee effectively does no additional work.</p>
+
+
+
+<figure class="wp-block-image size-large"><img alt="image placeholder" ></figure>
+
+
+
+<p>You may not understand the relationship between the number of employees and the throughput of the warehouse, but you definitely know what everybody is doing. If you can imagine writing a little bit of JavaScript code to simulate the behavior of each of your workers, you can run a simulation and see what actually happens. You can tweak the parameters and the rules the employees follow to see how it would help, and you can really gain some traction understanding, and then solving, very complex problems.</p>
+
+
+
+<p>That’s what <a href="https://hash.ai/">hash.ai</a> is all about. Read Dei’s <a href="https://hash.ai/about/mission">launch blog post</a>, then try building your own simulations!</p>
+			 ]]></content>
+<pubDate>2020-06-18T14:12:25+00:00</pubDate>
+<guid></guid>
+<author><![CDATA[ Joel Spolsky ]]></author>
+</item>
+<item>
+<title><![CDATA[ Kinda a big announcement ]]></title>
+<link></link>
+<content><![CDATA[ 
+		
+<p>The other day I was talking to a young developer working on a code base with tons of COM code, and I told him that even before he was born, everyone knew that COM was already so deeply obsolete that it was impossible to find anyone who knew enough to work on it. And yet they still have this old COM code base, and they still have one old programmer holding onto their job by being the only human left on the planet with a brain big enough to manually manage multithreaded objects. I remember that COM was like Gödels Theorem: it seemed important, and you could understand it all long enough to pass an exam, but ultimately it is mostly just a demonstration of how far human intelligence can be made to stretch under extreme duress.</p>
+
+
+
+<p>And, <em>bubbeleh</em>, if there is one thing we have learned, it’s that the things that make it <em>easier</em> on your brain are the things that matter.</p>
+
+
+<div class="wp-block-image">
+<figure class="alignright size-large is-resized"><img alt="image placeholder" ></figure>
+</div>
+
+
+<p>Programming changes slowly. Really slowly.</p>
+
+
+
+<p>Since I learned to code forty years ago, one thing that has mostly, <em>mostly</em>, changed about programming is that most developers no longer have to manage their own memory. Even getting that going took a long long time.</p>
+
+
+
+<p>I took a few stupid years trying to be the CEO of a growing company during which I didn’t have time to code, and when I came back to web programming, after a break of about 10 years, I found Node, React, and other goodies, which are, don’t get me wrong, amazing? Really really great? But I also found that it took approximately the same amount of work to make a CRUD web app as it always has, and that there were some things (like handing a file upload, or centering) that were, shockingly, still just as randomly difficult as they were in VBScript twenty years ago. </p>
+
+
+
+<p>Where are the flying cars?</p>
+
+
+
+<p>The biggest problem is that developers of programming tools love to add things and hate to take things away. So things get harder and harder and more and more complex because there are more and more ways to do the same thing, each has pros and cons, and you are likely to spend as much time just figuring out which “rich text editor” to use as you are to implement it.</p>
+
+
+
+<p>(Bill Gates, 1990: “How many f*cking programmers in this company are working on rich text editors?!”)</p>
+
+
+<div class="wp-block-image">
+<figure class="alignright size-large is-resized"><img alt="image placeholder" ></figure>
+</div>
+
+
+<p>So, in this world of slow, gradual change and alleged improvement, one thing did change literally overnight, or, to be precise, on September 15, 2008, which was when <a href="https://www.joelonsoftware.com/2008/09/15/stack-overflow-launches/">Stack Overflow launched</a>.</p>
+
+
+
+<p>Six-to-eight weeks before that, Stack Overflow was only an idea. (*Actually Jeff started development in April). Six-to-eight weeks after that, it was a standard part of every developer’s toolkit: something they used every day. Something <em>had</em> changed about programming, and changed very fast: the way developers learned and got help and taught each other.</p>
+
+
+
+<p>For many years, I was able to coast by telling delightful little stories about our incredible growth numbers, about the pay web site we made obsolete, and even about that one time when a Major Computer Book Publisher threatened to BURY US and launched their own Q&amp;A platform, which turned out to be more of a Scoff Generator than a Q&amp;A platform, but actually now almost anyone I talk to is too young to imagine The Days Before Stack Overflow, when the bookstore had an entire <em>wall</em> of Java and the way you picked a Rich Text Editor was going to Barnes and Noble and browsing through printed books for an hour, in the Rich Text Editor Component shelf.</p>
+
+
+
+<p>Stack Overflow got to be pretty big as a business. The company grew faster than any individual’s skills at managing companies, especially mine, so a lot of the business team has changed over, and we now have a really world-class, experienced team that is doing much better than us founders. We’ve done incredible work building a recruiting platform for great developers, a “reach and relevance” platform for getting developers excited about your products, and, most importantly, <a href="https://stackoverflow.com/teams">Stack Overflow for Teams</a>, which is growing so quickly that soon every developer in the world will be using the power of Stack Overflow to get help with their own code base, not just common languages and libraries. </p>
+
+
+
+<figure class="wp-block-image size-large"><img alt="image placeholder" ></figure>
+
+
+
+<p>And yeah, the one thing I made sure of was that everyone that came into the company understood exactly why Stack Overflow works, and what is important to the developers that it is by and for. So while we haven’t always been perfect, we have kept true to our mission, and the current leadership is just as committed to the vision of Stack Overflow as the founders are.</p>
+
+
+
+<p>Today we’re pleased to announce that Stack Overflow is joining <a href="https://www.prosus.com">Prosus</a>. Prosus is an investment and holding company, which means that the most important part of this announcement is that Stack Overflow will continue to operate independently, with the exact same team in place that has been operating it, according to the exact same plan and the exact same business practices. Don’t expect to see major changes or awkward “synergies”. The business of Stack Overflow will continue to focus on Reach and Relevance, and Stack Overflow for Teams. The entire company is staying in place: we just have different owners now.</p>
+
+
+
+<p>This is, in some ways, the best possible outcome. Stack Overflow stays independent. The company has plenty of cash on hand to expand and deliver more features and fix the old broken ones. Right now, the biggest gating factor to how fast we can do this is just how fast we can <a href="https://stackoverflow.com/company/work-here">hire excellent people</a>. </p>
+
+
+
+<figure class="wp-block-video"><video height="1080" style="aspect-ratio: 1920 / 1080;" width="1920" controls src="https://www.joelonsoftware.com/wp-content/uploads/2021/06/63017985094__5783FDD0-E895-4A7F-BB5A-A1CD6B6C9DCF.mov"></video></figure>
+
+
+
+<p>I’ve been out of the day-to-day for a while now. Together with Dei Vilkinsons, I’m helping to build <a href="https://hash.ai">HASH</a>. HASH makes it easy to build powerful simulations and make better decisions. As we worked on that, we discovered that too much of the data that you might need to run simulations needs to be fixed up before you can use it. That’s because data is often published on the web, using page description languages that are more concerned with formatting and consumption by humans. They lack the structure to make the data they contain readily accessed programatically, so step one is miserable screen scraping and data cleanup. That’s where a lot of people give up.</p>
+
+
+<div class="wp-block-image">
+<figure class="alignright size-large is-resized"><img alt="image placeholder" ></figure>
+</div>
+
+
+<p>We think we have an interesting way to fix this. If it works, we’ll change the web as quickly and completely as Stack Overflow changed programming. But it’s kind of ambitious and maybe a little too GRAND. If you are interested in joining that crazy journey, do reach out. The whole thing is going to be open source, so just hang on, and we’ll have something up on GitHub for you to play with.</p>
+
+
+
+<p>See you soon!</p>
+
+
+
+<p></p>
+			 ]]></content>
+<pubDate>2021-06-02T16:36:19+00:00</pubDate>
+<guid></guid>
+<author><![CDATA[ Joel Spolsky ]]></author>
+</item>
+<item>
+<title><![CDATA[ Making the web better. With blocks! ]]></title>
+<link></link>
+<content><![CDATA[ 
+		
+<p>You’ve probably seen web editors based on the idea of <em>blocks</em>. I’m typing this in WordPress, which has a little + button that brings up a long list of potential blocks that you can insert into this page:</p>
+
+
+
+<figure class="wp-block-image size-large is-resized"><img alt="image placeholder" ></figure>
+
+
+
+<p>This kind of “insert block” user interface concept is showing up in almost every blogging tool, web editor, note-taking app, and content management system. People like it and it makes sense. </p>
+
+
+
+<p>We have seem to have standardized on one thing: the <strong>/</strong> key to insert a new block. Everything else, though, is completely proprietary and non-standard. </p>
+
+
+
+<p>I thought, wouldn’t it be cool if blocks were interchangeable and reusable across the web?</p>
+
+
+
+<p>Until now, every app that wants blocks has to implement them from scratch. Want a calendar block? Some kind of fancy Kanban board? Something to embed image galleries? Code it up yourself, buddy.</p>
+
+
+
+<p>As a result of the non-standardization of blocks, our end-users suffer. If someone is using my blog engine, they can only use those blocks that I had time to implement. Those blocks may be pretty basic or incomplete. Users might want to use a fancier block that they saw in WordPress or Medium or Notion, but my editor doesn’t have it. Blocks can’t be shared or moved around very easily, and our users are limited to the features and capabilities that we had time to re-implement.</p>
+
+
+
+<p>To fix this, we’re going to create a protocol called the <a href="https://blockprotocol.org">Block Protocol</a>. </p>
+
+
+
+<p>It’s open, free, non-proprietary, we want it to be everywhere on the web. </p>
+
+
+
+<p>It’s just a protocol that embedding applications can use to embed blocks. Any block can be used in any embedding application if they all follow the protocol.</p>
+
+
+
+<p>Our hope is that this will make life much easier for app developers to support a huge variety of block types. At the same time, anyone can develop a block once and have it work in any blog platform, note-taking app, or content management system. It is all 100% free, open, and any sample code we develop showing how to use the protocol will be open-source.</p>
+
+
+
+<p>We’ve released a very early draft of the Block Protocol, and we’ve started building some very simple blocks and a simple editor that can host them.</p>
+
+
+
+<figure class="wp-block-image size-large is-style-default"><img alt="image placeholder" ></figure>
+
+
+
+<p>We’re hoping to foster an open source community that creates a huge open source library of amazing blocks:</p>
+
+
+
+<figure class="wp-block-image size-large is-style-default"><img alt="image placeholder" ></figure>
+
+
+
+<p>What can be a block? </p>
+
+
+
+<ul class="wp-block-list">
+<li>Anything that makes sense in a document: a paragraph, list, table, diagram, or a kanban board. </li>
+<li>Anything that makes sense on the web: an order form, a calendar, a video.</li>
+<li>Anything that lets you interact with structured or typed data: I’ll get to that in a minute.</li>
+</ul>
+
+
+
+<p>If you work on any kind of editor—be it a blogging tool, a note-taking app, a content management system, or anything like that—you should allow your users to embed blocks that conform to the Block Protocol. This way you can write the embedding code once and immediately make your editor able to embed a rich variety of block types with no extra work on your part.</p>
+
+
+
+<p>If you work on any kind of custom data type that might make sense to embed in web pages, you should support the Block Protocol. That way anybody with a hosting application that supports the protocol can embed your custom data type.</p>
+
+
+
+<p>Because it’s all 100% open, we hope that the Block Protocol will become a web standard and commonly used across the Internet.</p>
+
+
+
+<p>That will mean that common block types, from paragraphs and lists to images and videos, will get better and better. But it will also mean that some esoteric block types will be embeddable anywhere. Want to create a block that shows the Great Circle routing for a flight between two airports? Write the code for the block once and it can be embedded anywhere. </p>
+
+
+
+<p>Oh, and <strong>one more thing</strong>. Blocks can be highly structured, that is, they can have types. That means that they magically become machine-readable without screen scraping. For example, if you want to create an event block to represent an event on a calendar, you will be able to specify a <em>schema</em> that describes the event data type in a standard way. That way tools like calendars can instantly parse and understand web pages that contain your event block, reliably.</p>
+
+
+
+<p>Over time, it will mean that anyone can easy publish complex, typed data sets on the web that are automatically machine-readable without extra work. (Have you ever seen one of those websites where there’s a link to “download the data set in .XLS format”? Yeah, say goodbye to that.)</p>
+
+
+
+<p><strong>We’re going public with this very early in the development process</strong> because we need a lot of help! </p>
+
+
+
+<p>Everything we have so far is version 0.1. It’s simple and not very good yet and going to need some iteration before it has the hope of truly being a useful web protocol. </p>
+
+
+
+<p>This is an open protocol, free and non-proprietary, and it’s going to make the open web much better if widely adopted, so we need to start getting people involved early, giving us feedback, and building new things!</p>
+
+
+
+<p><a href="https://blockprotocol.org">Go read more about the Block Protocol now!</a></p>
+			 ]]></content>
+<pubDate>2022-01-27T17:14:00+00:00</pubDate>
+<guid></guid>
+<author><![CDATA[ Joel Spolsky ]]></author>
+</item>
+<item>
+<title><![CDATA[ Progress on the Block Protocol ]]></title>
+<link></link>
+<content><![CDATA[ 
+		
+<p>Since the 1990s, the web has been a publishing place for human-readable documents. </p>
+
+
+
+<p>Documents published on the web are in HTML. HTML has a little bit of structure, for example, “here is a paragraph” or “emphasize this word.” </p>
+
+
+
+<p>Then you stir in some CSS, which adds some pretty decorations to the structure, saying things like: make those paragraphs have tiny gray sans-serif text! And then people think you are hip. Unless they are older, and they can’t read your tiny gray words, so they give up on you.</p>
+
+
+
+<p>That’s “structure,” as far as it goes, on the web.</p>
+
+
+
+<p>Imagine, for example, that you mention a book on the web.</p>
+
+
+
+<p><strong>Goodnight Moon</strong><br>by <em>Margaret Wise Brown</em><br>Illustrated by <em>Clement Hurd</em><br>Harper &amp; Brothers, 1947<br>ISBN 0-06-443017-0</p>
+
+
+
+<p>There’s not much structure there.  A naive computer program reading this web page might not realize I was even mentioning a book. All I did was make the title bold.</p>
+
+
+
+<p>So, also since the 1990s, people have realized that we can make the web a much more useful place to publish information if we applied a bit more structure. As early as 1999, Tim Berners-Lee was writing about the <a href="https://en.wikipedia.org/wiki/Semantic_Web">Semantic Web</a>:</p>
+
+
+
+<blockquote class="wp-block-quote is-layout-flow wp-block-quote-is-layout-flow">
+<p>“I have a dream for the Web [in which computers] become capable of analyzing all the data on the Web – the content, links, and transactions between people and computers. A ‘Semantic Web’, which makes this possible, has yet to emerge, but when it does, the day-to-day mechanisms of trade, bureaucracy and our daily lives will be handled by machines talking to machines. The <a href="https://en.wikipedia.org/wiki/Intelligent_agent">‘intelligent agents’</a> people have touted for ages will finally materialize.”</p>
+<cite>Tim Berners-Lee, Weaving The Web, 1999 HarperSanFrancisco (Chapter 12)</cite>
+</blockquote>
+
+
+
+<p>Using the Semantic Web you might publish a book title with a lot more detail that makes it computer-readable. To do this, you would probably start by going to schema.org and looking up <a href="https://schema.org/Book">their idea of a book</a>. Then you could use one of a number of formats, like RDF or JSON-LD, to add additional markup to your HTML saying “hey! here’s a book!”</p>
+
+
+
+<p>Ok, well, doing that is kinda hard to figure out, and, to be honest, it’s homework. Once your beautiful blog post is published and human-readable, it’s hard to gather the mental energy to figure out how to add the additional fancy markups that will make your web page computer-readable, and, unless there is already a computer reading your web pages, at this point, you usually give up. So, yeah. That was 1999, and not much progress has been made and there is very little of this semantic markup in the wild.</p>
+
+
+
+<p><strong>Well.</strong></p>
+
+
+
+<p>We would like to fix this, because human progress depends on getting more and more information in formats that are readily accessible, both by regular humans, their dumb A.I. li’l sibs, and your more traditional computer programs.</p>
+
+
+
+<figure class="wp-block-image size-large"><img alt="image placeholder" ></figure>
+
+
+
+<p>Here is something I believe: <strong>people will only add semantic markup to their web pages if doing so is easier than not.</strong></p>
+
+
+
+<p>In other words, the cost of adding semantic markup has to be zero or negative, or this whole project is not going anywhere.</p>
+
+
+
+<p>Now imagine this world for a second:</p>
+
+
+
+<ul class="wp-block-list">
+<li>I want to insert a book into my blog post</li>
+
+
+
+<li>I type <strong>/book</strong>
+</li>
+
+
+
+<li>A search box appears where I start typing in the title of my book and choose from an autocomplete list.</li>
+
+
+
+<li>Once I find the book, a block gets inserted in my blog post showing details of the book in a format I like, <em>with nice semantic markup behind the scenes</em>.</li>
+</ul>
+
+
+
+<p>In this world I did <em>less</em> work to insert a book (because I was assisted by a UI that looked up the details for me).</p>
+
+
+
+<p>You can imagine the same scenario applying to literally any other kind of structured data.</p>
+
+
+
+<ul class="wp-block-list">
+<li>I want to insert an address into my blog post</li>
+
+
+
+<li>I type <strong>/address</strong>
+</li>
+
+
+
+<li>A search box appears where I start to type a location, which autocompletes in the way you have seen Instagram and Google Maps and a million other apps do it</li>
+
+
+
+<li>Once I choose the address, a block gets inserted showing the details of the address complete with semantic markup behind the scenes.</li>
+</ul>
+
+
+
+<p>My “address block” might have any visual appearance. Visitors to my web page might see the address, or a little map, or a little map in Japanese, etc. etc. The semantic content is there behind the scenes. So, for example, my web browser might know “gosh this is an address! Maybe you want to do <em>address-y</em> things with it, like <em>go there</em>,” and then my browser might offer me options to summon a self-driving car and even call an ambulance when the self-driving car self-drives into a snowbank.</p>
+
+
+
+<p>My two simplistic examples of “book” and “address” are interesting right now because (a) you can probably think of 1,000,000 more data types like this, and (b) none of these things work right now, because even though almost every web editing environment has a concept of “blocks,” none of them are extensible. WordPress has (oh gosh) hundreds of block types, but they don’t have thousands or millions, they don’t have “book” or “address” or “Burning Man Theme Camp” yet, and there’s no ecosystem by which developers and users can contribute <em>new</em> block types.</p>
+
+
+
+<p>So I guess I gotta wait around for someone at WordPress to develop all the blocks I want to use. And then someone at Notion, and then someone at Trello, and then someone at Mailchimp, and someone at every other vendor that provides a text editor.</p>
+
+
+
+<h2 class="wp-block-heading">I have a better plan.</h2>
+
+
+
+<p>The web was built with open protocols. Suppose we all agree on a <em>protocol</em> for blocks.</p>
+
+
+
+<p>Any developer that wants to create a new block can conform to this protocol.</p>
+
+
+
+<p>Any kind of web-text-editing application can also conform to this protocol.</p>
+
+
+
+<p>Then if <em>anyone</em> goes to the trouble of creating a cool “book” or “address” block, we’ll all be able to use it, anywhere.</p>
+
+
+
+<p>And we shall dub this protocol, oh I don’t know, <a href="https://blockprotocol.org/">the Block Protocol</a>.</p>
+
+
+
+<p>And it should be, I think, 100% free, open, and public, so that there is no impediment to anyone on earth using it. And in fact if you want to make blocks that are open source or public, good for you, but if for some reason you would like to make private or commercial blocks, that’s fine too.</p>
+
+
+
+<h2 class="wp-block-heading">Where we’re up to</h2>
+
+
+
+<p>It’s been about a year since we started talking about the Block Protocol, and we’ve made a lot of progress figuring out how it has to work to do all the things it will need to do, in a clean and straightforward way. </p>
+
+
+
+<p>But this is all going nowhere if it requires 93,000,000 humans to cooperate with my crazy scheme just to get it off the ground.</p>
+
+
+
+<p>So what we did is build a <a href="https://blockprotocol.org/wordpress">WordPress Plugin</a> that allows you to embed Block Protocol blocks into posts on your WordPress sites just as easily as you insert any other block.</p>
+
+
+
+<p>Since WordPress powers <a href="https://wordpress.org/about/features/" target="_blank" rel="noreferrer noopener">43%</a> of the web, that means if you build a block for the Block Protocol, it’ll be widely usable right away.</p>
+
+
+
+<p>Here’s a video demo:</p>
+
+
+
+<figure class="wp-block-embed is-type-video is-provider-youtube wp-block-embed-youtube wp-embed-aspect-16-9 wp-has-aspect-ratio"><div class="wp-block-embed__wrapper">
+<span class="embed-youtube" style="text-align:center; display: block;"><iframe class="youtube-player" width="730" height="411" src="https://www.youtube.com/embed/p43LHX_h81o?version=3&amp;rel=1&amp;showsearch=0&amp;showinfo=1&amp;iv_load_policy=1&amp;fs=1&amp;hl=en-US&amp;autohide=2&amp;wmode=transparent" allowfullscreen="true" style="border:0;" sandbox="allow-scripts allow-same-origin allow-popups allow-presentation allow-popups-to-escape-sandbox"></iframe></span>
+</div></figure>
+
+
+
+<p>The WordPress Plugin will be free, and it will be widely available in February, when we’ll also publish version 0.3 of the Block Protocol specification. You can get <a href="https://blockprotocol.org/wordpress">early access</a> now.</p>
+
+
+
+<figure class="wp-block-image size-large"><img alt="image placeholder" ></figure>
+
+
+
+<p>In fact, if you were thinking of writing a plugin for WordPress for your own kind of custom block, you’ll find that using <em>our</em> plugin as your starting point is a lot easier, because you don’t have to know anything about WordPress Plugins or write any PHP code. So even if you don’t care for any of my crazy theories and just want to add a block to WordPress, this is the way to go.</p>
+
+
+
+<p>Ultimately, though, we just want to make it easier to add useful semantic, structured information to the web, and this is the first step.</p>
+
+
+
+<p>PS We just set up <a href="http://blockprotocol.org/discord">a Discord server for the Block Protocol</a> where you can participate, ask questions, and meet the team.</p>
+
+
+
+<p>PPS You can follow me on Mastodon, where I am <a href="https://blackrock.city/@spolsky">@spolsky@blackrock.city</a>. I don’t post that much, but I’m  enjoying hanging out there in a human-to-human environment where there isn’t an algorithm stirring up righteous indignation about the latest fake-outrage of the day.</p>
+			 ]]></content>
+<pubDate>2022-12-19T13:01:40+00:00</pubDate>
+<guid></guid>
+<author><![CDATA[ Joel Spolsky ]]></author>
+</item>
+</channel>
+</rss>
