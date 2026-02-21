@@ -1,1 +1,1 @@
-https://raw.githubusercontent.com/goooooouwa/rss-feeds/master/the_looking_glass/slice-0.xml
+https://raw.githubusercontent.com/goooooouwa/rss-feeds/master/the_looking_glass/rss-0.xml
